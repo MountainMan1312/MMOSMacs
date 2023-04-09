@@ -35,3 +35,16 @@
 
 ;; Disable scroll bars
 (push '(vertical-scroll-bars . 0) default-frame-alist)
+
+
+;; ---------------------------------
+;; Maximize frame on startup
+;; -------------------------
+;; Resizing is one of the primary
+;; sources of visual glitching.
+;; ---------------------------------
+
+(push '(fullscreen . maximized) initial-frame-alist)
+(push '(ns-transparent-titlebar . t) default-frame-alist)
+(setq frame-inhibit-implied-resize t
+      frame-resize-pixelwise t)
