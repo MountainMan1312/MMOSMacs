@@ -92,3 +92,15 @@
 ;; Fix the keybinds for the ESC key
 (global-set-key (kbd "<escape>") 'mm/keyboard-escape-quit-keep-windows)
 (global-unset-key (kbd "C-x ESC ESC"))
+
+
+;; ---------------------------------
+;; Replace yes/no prompts with y/n
+;; -------------------------------
+;; It's too much to ask for me to
+;; type 3 whole letters to confirm
+;; something. I demand to only have
+;; to press a single key.
+;; ---------------------------------
+
+(defalias 'yes-or-no-p 'y-or-n-p)
