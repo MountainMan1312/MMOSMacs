@@ -48,3 +48,13 @@
 (push '(ns-transparent-titlebar . t) default-frame-alist)
 (setq frame-inhibit-implied-resize t
       frame-resize-pixelwise t)
+
+
+;; ---------------------------------
+;; Start with a black background
+;; -----------------------------
+;; This is necessary to prevent eye
+;; damage
+;; ---------------------------------
+
+(set-face-attribute 'default nil :background "#000000" :foreground "#FFFFFF")
