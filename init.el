@@ -29,7 +29,8 @@
 ;; They should not exist.
 ;; ---------------------------------
 
-(setq auto-save-default nil)
+(setq auto-save-default nil           ; don't create auto-saves
+      auto-save-list-file-prefix nil) ; don't create auto-save-list dir
 
 
 ;; ---------------------------------
