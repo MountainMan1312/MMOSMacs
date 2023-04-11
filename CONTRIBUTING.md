@@ -24,7 +24,7 @@ I will reject all contributions from:
 
 Furthermore, individual items will be rejected because of:
 - exceptionally vulgar language.
-- ignorance or disregard of the `STYLE_GUIDE.md` or Issue/PR templates.
+- ignorance or disregard of the `STYLE_GUIDE.md`
 
 
 ## How to Contribute
@@ -45,10 +45,6 @@ it already exists, comment on the existing Issue instead of making a new
 one. Duplicate issues will be removed and you will be asked to move your
 post to the comment section of the existing post. It's not to be rude,
 it's just for organization's sake.
-
-Each type of Issue has an Issue Template. The templates can be found in
-the `.github/ISSUE_TEMPLATE/` directory. Pull reqeusts also have
-templates which are located in `.github/PULL_REQUEST_TEMPLATE/`.
 
 To contribute code:
 1. Make an RFC or find an existing one
