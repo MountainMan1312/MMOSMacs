@@ -32,7 +32,7 @@ Furthermore, individual items will be rejected because of:
 There are several ways you can contribute.
 
 The easiest way you can contribute is by taking part in the discussions
-on the [GitHub Issues page](https://github.com/MountainMan1312/MMOSMacs/Issues).
+on the [GitHub Issues page](https://github.com/MountainMan1312/MMOSMacs/issues).
 You can comment on topics that already have an existing Issue, or you
 can submit your own if it does not already exist. Issues can take the
 form of:
