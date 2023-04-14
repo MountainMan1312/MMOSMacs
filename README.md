@@ -5,12 +5,10 @@ idea I have for an Emacs-centric Linux distribution. MMOSMacs is the
 core of my computing experience, and is designed to be a
 jack-of-all-trades just like me.
 
-MMOSMacs is currently in the planning phase.
-
 
 ## Plans
 
-- Modular non-literate configuration
+- Non-literate configuration
 - `straight.el` + `use-package` package management
 - Emacs as a desktop environment (`EXWM`, `EDNC`)
 - System & network administration suite
@@ -26,7 +24,8 @@ MMOSMacs is currently in the planning phase.
     - Games
 - Custom modeline & anti-distraction features
 - Custom theme deisnged to reduce eye-strain
-- Custom keybinds, menus, & dialogs
+- Custom keybind system, menus, & dialogs
+
 
 ## Contributing
 
