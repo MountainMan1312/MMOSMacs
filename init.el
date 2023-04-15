@@ -5,6 +5,49 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Package Management
+;; -----------------------------------
+;; MMOSMacs uses `straight.el' for package management.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Bootstrap `straight.el'
+;; -----------------------
+;; This is some pre-written magic
+;; provided by `straight.el'. Dont
+;; ask me what it does.
+;; ---------------------------------
+
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 6))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+
+
+;; ---------------------------------
+;; Don't load outdated code
+;; ------------------------
+;; MMOSMacs is under highly active
+;; development and undergoes
+;; freuqent changes. The newest code
+;; should always be loaded
+;; ---------------------------------
+
+;; if a `.el' file is newer than its corresponding `.elc', load the `.el'
+(setq load-prefer-newer t)
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; File Management
 ;; ----------------
 ;; Everything to do with file or directory management goes here.

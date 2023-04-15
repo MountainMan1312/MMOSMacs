@@ -58,3 +58,24 @@
 ;; ---------------------------------
 
 (set-face-attribute 'default nil :background "#000000" :foreground "#FFFFFF")
+
+
+
+
+;; ---------------------------------------------------------------------
+;;; Package Management
+;; -------------------
+;; Only one thing should be here. I only wrote this description so the
+;; formatting would be consistent. It's a useless comment. Something
+;; something package management.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Disable package manager
+;; -----------------------
+;; Disable the built-in package
+;; manager (`package.el'), because
+;; MMOSMacs will be using
+;; `straight.el'
+;; ---------------------------------
+(setq package-enable-at-startup nil)
