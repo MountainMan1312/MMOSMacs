@@ -5,9 +5,10 @@
 
 
 ;; ---------------------------------------------------------------------
-;;; Package Management
+;;; Package & Configuration Management
 ;; -----------------------------------
-;; MMOSMacs uses `straight.el' for package management.
+;; MMOSMacs uses `straight.el' for package management and `use-package'
+;; for configuration management to make things more consistent.
 ;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
@@ -30,6 +31,16 @@
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+
+
+;; ---------------------------------
+;; `use-package'
+;; -------------
+;; This makes sure `use-package' is
+;; installed and loaded.
+;; ---------------------------------
+
+(straight-use-package 'use-package)
 
 
 ;; ---------------------------------
