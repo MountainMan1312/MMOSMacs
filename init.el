@@ -31,6 +31,20 @@
   (load bootstrap-file nil 'nomessage))
 
 
+;; ---------------------------------
+;; Don't load outdated code
+;; ------------------------
+;; MMOSMacs is under highly active
+;; development and undergoes
+;; freuqent changes. The newest code
+;; should always be loaded
+;; ---------------------------------
+
+;; if a `.el' file is newer than its corresponding `.elc', load the `.el'
+(setq load-prefer-newer t)
+
+
+
 
 ;; ---------------------------------------------------------------------
 ;;; File Management
