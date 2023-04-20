@@ -103,7 +103,7 @@
 (setq scroll-margin 2)
 
 ;; Make mouse scroll smoother
-(setq mouse-wheel-scroll-amount '(2))
+(setq mouse-wheel-scroll-amount '(2)
       mouse-wheel-progressive-speed nil
       mouse-wheel-follow-mouse t)
 
@@ -117,6 +117,7 @@
 ;; when already at the beginning/end
 ;; of buffer
 (setq scroll-error-top-bottom t)
+
 
 
 
