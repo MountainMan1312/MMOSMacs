@@ -129,6 +129,16 @@
 (global-visual-line-mode)
 
 
+;; ---------------------------------
+;; Type over selected text
+;; -----------------------
+;; Typing over selected text should
+;; delete the selected text
+;; ---------------------------------
+
+(delete-selection-mode t)
+
+
 
 
 ;; ---------------------------------------------------------------------
