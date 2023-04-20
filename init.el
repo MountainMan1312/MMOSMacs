@@ -130,6 +130,17 @@
 
 
 ;; ---------------------------------
+;; Delimiters
+;; ----------
+;; Parentheses, brackets, and other
+;; open-close type things
+;; ---------------------------------
+
+;; Auto-close delimiters
+(electric-pair-mode)
+
+
+;; ---------------------------------
 ;; Type over selected text
 ;; -----------------------
 ;; Typing over selected text should
