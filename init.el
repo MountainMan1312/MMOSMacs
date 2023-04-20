@@ -65,32 +65,6 @@
 ;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
-;; Whitespace
-;; ----------
-;; Spaces, tabs, indentation,
-;; newlines, and text-wrapping.
-;; ---------------------------------
-
-;; Show stray whitespace
-(setq-default show-trailing-whitespace t
-	            indicate-empty-lines t
-	            indicate-buffer-boundaries 'left)
-
-;; Make files end with newline
-(setq-default require-final-newline t)
-
-;; Sentences end with ONE space
-(setq-default sentence-end-double-space nil)
-
-;; Use spaces for indentation
-(setq-default indent-tabs-mode nil
-	            tab-width 2)
-
-;; Wrap words at buffer edge
-(global-visual-line-mode)
-
-
-;; ---------------------------------
 ;; Scrolling
 ;; ---------
 ;; This makes the scrolling behavior
@@ -117,6 +91,32 @@
 ;; when already at the beginning/end
 ;; of buffer
 (setq scroll-error-top-bottom t)
+
+
+;; ---------------------------------
+;; Whitespace
+;; ----------
+;; Spaces, tabs, indentation,
+;; newlines, and text-wrapping.
+;; ---------------------------------
+
+;; Show stray whitespace
+(setq-default show-trailing-whitespace t
+	            indicate-empty-lines t
+	            indicate-buffer-boundaries 'left)
+
+;; Make files end with newline
+(setq-default require-final-newline t)
+
+;; Sentences end with ONE space
+(setq-default sentence-end-double-space nil)
+
+;; Use spaces for indentation
+(setq-default indent-tabs-mode nil
+	            tab-width 2)
+
+;; Wrap words at buffer edge
+(global-visual-line-mode)
 
 
 
