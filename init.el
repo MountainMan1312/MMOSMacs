@@ -75,6 +75,18 @@
 
 
 ;; ---------------------------------
+;; Highlight stuff
+;; ---------------
+;; Sometimes it's hard to find
+;; things. Highlighting makes it a
+;; little easier.
+;; ---------------------------------
+
+;; Highlight current line
+(when window-system (add-hook 'prog-mode-hook 'hl-line-mode))
+
+
+;; ---------------------------------
 ;; Scrolling
 ;; ---------
 ;; This makes the scrolling behavior
