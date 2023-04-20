@@ -59,6 +59,112 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Text Editor
+;; ------------
+;; These tweaks are meant to make the text editor more convenient.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Line and column numbers
+;; -----------------------
+;; It helps to know where you are
+;; ---------------------------------
+
+(column-number-mode)
+(global-display-line-numbers-mode t)
+
+
+;; ---------------------------------
+;; Highlight stuff
+;; ---------------
+;; Sometimes it's hard to find
+;; things. Highlighting makes it a
+;; little easier.
+;; ---------------------------------
+
+;; Highlight current line
+(when window-system (add-hook 'prog-mode-hook 'hl-line-mode))
+
+
+;; ---------------------------------
+;; Scrolling
+;; ---------
+;; This makes the scrolling behavior
+;; smoother and easier to follow.
+;; ---------------------------------
+
+;; Small scroll margin makes it
+;; easier to see when to stop when
+;; scrolling fast.
+(setq scroll-margin 2)
+
+;; Make mouse scroll smoother
+(setq mouse-wheel-scroll-amount '(2)
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-follow-mouse t)
+
+;; Prevent jumpy scrolling
+(setq scroll-conservatively 10
+      auto-window-vscroll nil
+      scroll-preserve-screen-position t)
+
+;; Move point to beginning/end of
+;; buffer if attempting to scroll
+;; when already at the beginning/end
+;; of buffer
+(setq scroll-error-top-bottom t)
+
+
+;; ---------------------------------
+;; Whitespace
+;; ----------
+;; Spaces, tabs, indentation,
+;; newlines, and text-wrapping.
+;; ---------------------------------
+
+;; Show stray whitespace
+(setq-default show-trailing-whitespace t
+	            indicate-empty-lines t
+	            indicate-buffer-boundaries 'left)
+
+;; Make files end with newline
+(setq-default require-final-newline t)
+
+;; Sentences end with ONE space
+(setq-default sentence-end-double-space nil)
+
+;; Use spaces for indentation
+(setq-default indent-tabs-mode nil
+	            tab-width 2)
+
+;; Wrap words at buffer edge
+(global-visual-line-mode)
+
+
+;; ---------------------------------
+;; Delimiters
+;; ----------
+;; Parentheses, brackets, and other
+;; open-close type things
+;; ---------------------------------
+
+;; Auto-close delimiters
+(electric-pair-mode)
+
+
+;; ---------------------------------
+;; Type over selected text
+;; -----------------------
+;; Typing over selected text should
+;; delete the selected text
+;; ---------------------------------
+
+(delete-selection-mode t)
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; File Management
 ;; ----------------
 ;; Everything to do with file or directory management goes here.
