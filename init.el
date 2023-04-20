@@ -90,6 +90,34 @@
 (global-visual-line-mode)
 
 
+;; ---------------------------------
+;; Scrolling
+;; ---------
+;; This makes the scrolling behavior
+;; smoother and easier to follow.
+;; ---------------------------------
+
+;; Small scroll margin makes it
+;; easier to see when to stop when
+;; scrolling fast.
+(setq scroll-margin 2)
+
+;; Make mouse scroll smoother
+(setq mouse-wheel-scroll-amount '(2))
+      mouse-wheel-progressive-speed nil
+      mouse-wheel-follow-mouse t)
+
+;; Prevent jumpy scrolling
+(setq scroll-conservatively 10
+      auto-window-vscroll nil
+      scroll-preserve-screen-position t)
+
+;; Move point to beginning/end of
+;; buffer if attempting to scroll
+;; when already at the beginning/end
+;; of buffer
+(setq scroll-error-top-bottom t)
+
 
 
 ;; ---------------------------------------------------------------------
