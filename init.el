@@ -65,6 +65,16 @@
 ;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
+;; Line and column numbers
+;; -----------------------
+;; It helps to know where you are
+;; ---------------------------------
+
+(column-number-mode)
+(global-display-line-numbers-mode t)
+
+
+;; ---------------------------------
 ;; Scrolling
 ;; ---------
 ;; This makes the scrolling behavior
