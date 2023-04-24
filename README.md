@@ -6,6 +6,30 @@ core of my computing experience, and is designed to be a
 jack-of-all-trades just like me.
 
 
+## Installation
+
+First, clone this repository into your `~/.emacs.d` directory.
+```bash
+cd
+git clone https://github.com/MountainMan1312/MMOSMacs.git .emacs.d
+```
+
+Next create symlinks to the `xinitrc` and `emacs.desktop` files so X
+knows what to do:
+```bash
+# Backup your `.xinitrc` file if you feel like it.
+# Replace `.xinitrc.old` with whatever you want to name the backup.
+mv .xinitrc .xinitrc.old
+
+# Symlink your `.xinitrc` file
+ln -s .emacs.d/xinitrc .xinitrc
+
+# Symlink `emacs.desktop` to add MMOSMacs as an entry to your Display
+# Manager / login screen.
+sudo ln -s .emacs.d/emacs.desktop /usr/share/xsessions/emacs.desktop
+```
+
+
 ## Plans
 
 - Non-literate configuration
