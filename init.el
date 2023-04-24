@@ -59,6 +59,29 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Window Manager / Desktop Environment
+;; -------------------------------------
+;; Emacs is capable of functioning as the entire desktop environment.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Emacs X Window Manager (EXWM)
+;; -----------------------------
+;; EXWM is a fully-featured
+;; X Window Manager.
+;; ---------------------------------
+
+(use-package exwm
+  :straight t
+  :config
+  (require 'exwm-config)
+  (setq exwm-workspace-number 1)
+  (exwm-enable))
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Text Editor
 ;; ------------
 ;; These tweaks are meant to make the text editor more convenient.
