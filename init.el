@@ -104,6 +104,32 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Completion
+;; -----------
+;; Completion refers to the suggestions you get when you type a few
+;; characters in almost any modern IDE. MMOSMacs attempts to have
+;; completion in as many places as possible.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Minibuffer completion
+;; ---------------------
+;; Vertico provides minibuffer when
+;; typing commands and stuff like
+;; that.
+;; ---------------------------------
+
+(use-package vertico
+  :straight t
+  :config
+  (setq vertico-count 5
+        vertico-cycle nil)
+  (vertico-mode))
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Text Editor
 ;; ------------
 ;; These tweaks are meant to make the text editor more convenient.
