@@ -104,6 +104,89 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Completion
+;; -----------
+;; Completion refers to the suggestions you get when you type a few
+;; characters in almost any modern IDE. MMOSMacs attempts to have
+;; completion in as many places as possible.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Minibuffer completion
+;; ---------------------
+;; Vertico provides minibuffer when
+;; typing commands and stuff like
+;; that.
+;; ---------------------------------
+
+(use-package vertico
+  :straight t
+  :config
+  (setq vertico-count 5
+        vertico-cycle nil)
+  (vertico-mode))
+
+
+;; ---------------------------------
+;; Text completion
+;; ---------------
+;; Corfu provides in-buffer text
+;; completion, and is the
+;; counterpart to vertico.
+;; ---------------------------------
+
+(use-package corfu
+  :straight (corfu :files (:defaults "extensions/*")
+                   :includes (corfu-info corfu-history))
+  :config
+  (setq corfu-auto t
+        corfu-auto-prefix 2
+        corfu-auto-delay 0.1
+        corfu-min-width 40
+        corfu-max-width corfu-min-width
+        corfu-count 8
+        corfu-scroll-margin 3
+        corfu-cycle nil
+        corfu-popupinfo-delay 0.15
+        corfu-quit-at-boundary t
+        corfu-separator ?\s
+        corfu-quit-no-match 'separator)
+  :init
+  (global-corfu-mode)
+  (corfu-popupinfo-mode)
+  (corfu-indexed-mode))
+
+
+;; ---------------------------------
+;; Minibuffer hints
+;; ----------------
+;; Add descriptions and keybind
+;; hints to minibuffer completions.
+;; ---------------------------------
+
+(use-package marginalia
+  :straight t
+  :init (marginalia-mode))
+
+
+;; ---------------------------------
+;; Orderless completion
+;; --------------------
+;; A different ordering method for
+;; completion suggestions
+;; ---------------------------------
+
+(use-package orderless
+  :straight t
+  :config
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Text Editor
 ;; ------------
 ;; These tweaks are meant to make the text editor more convenient.
