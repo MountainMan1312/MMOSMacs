@@ -127,6 +127,36 @@
   (vertico-mode))
 
 
+;; ---------------------------------
+;; Text completion
+;; ---------------
+;; Corfu provides in-buffer text
+;; completion, and is the
+;; counterpart to vertico.
+;; ---------------------------------
+
+(use-package corfu
+  :straight (corfu :files (:defaults "extensions/*")
+                   :includes (corfu-info corfu-history))
+  :config
+  (setq corfu-auto t
+        corfu-auto-prefix 2
+        corfu-auto-delay 0.1
+        corfu-min-width 40
+        corfu-max-width corfu-min-width
+        corfu-count 8
+        corfu-scroll-margin 3
+        corfu-cycle nil
+        corfu-popupinfo-delay 0.15
+        corfu-quit-at-boundary t
+        corfu-separator ?\s
+        corfu-quit-no-match 'separator)
+  :init
+  (global-corfu-mode)
+  (corfu-popupinfo-mode)
+  (corfu-indexed-mode))
+
+
 
 
 ;; ---------------------------------------------------------------------
