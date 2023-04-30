@@ -157,6 +157,18 @@
   (corfu-indexed-mode))
 
 
+;; ---------------------------------
+;; Minibuffer hints
+;; ----------------
+;; Add descriptions and keybind
+;; hints to minibuffer completions.
+;; ---------------------------------
+
+(use-package marginalia
+  :straight t
+  :init (marginalia-mode))
+
+
 
 
 ;; ---------------------------------------------------------------------
