@@ -59,10 +59,32 @@
 
 
 ;; ---------------------------------------------------------------------
-;;; Window Manager / Desktop Environment
-;; -------------------------------------
-;; Emacs is capable of functioning as the entire desktop environment.
+;;; Graphical Environment
+;; ----------------------
+;; MMOSMacs is intended to be my entire Desktop Environment.
 ;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Disable superfluous UI elements
+;; -------------------------------
+;; These UI elements are not useful
+;; for the system I am trying to
+;; make MMOSMacs into.
+;;
+;; Some of these were disabled in
+;; Early Init, but for completion's
+;; sake I disable them here as well.
+;; ---------------------------------
+
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(tooltip-mode -1)
+(menu-bar-mode -1)
+(set-fringe-mode -1)
+(setq use-dialog-box nil
+      inhibit-startup-message t
+      initial-scratch-message "")
+
 
 ;; ---------------------------------
 ;; Emacs X Window Manager (EXWM)
