@@ -169,6 +169,21 @@
   :init (marginalia-mode))
 
 
+;; ---------------------------------
+;; Orderless completion
+;; --------------------
+;; A different ordering method for
+;; completion suggestions
+;; ---------------------------------
+
+(use-package orderless
+  :straight t
+  :config
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+
+
 
 
 ;; ---------------------------------------------------------------------
