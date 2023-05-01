@@ -102,6 +102,21 @@
   (exwm-enable))
 
 
+;; ---------------------------------
+;; Temporary theme
+;; ---------------
+;; MMOSMacs has a planned custom
+;; theme, but for now I'll use a
+;; temporary theme so I can bear to
+;; look at Emacs.
+;; ---------------------------------
+
+(use-package jazz-theme
+  :straight t)
+
+(load-theme 'jazz t)
+
+
 
 
 ;; ---------------------------------------------------------------------
