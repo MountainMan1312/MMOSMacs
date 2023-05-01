@@ -81,6 +81,7 @@
 (tooltip-mode -1)
 (menu-bar-mode -1)
 (set-fringe-mode -1)
+(setq ring-bell-function 'ignore)
 (setq use-dialog-box nil
       inhibit-startup-message t
       initial-scratch-message "")
