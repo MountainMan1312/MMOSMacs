@@ -351,6 +351,28 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Personal Knowledge Management System (PKMS)
+;; --------------------------------------------
+;; Using `org', `org-roam', and a note-hierarchy I've developed over
+;; several years of trial-and-error, I keep all my notes in a logical
+;; organized collection.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; `org'
+;; -----
+;; `org' is a versatile format for
+;; note-taking and other stuff. It
+;; is the core of my PKMS system.
+;; ---------------------------------
+
+(use-package org
+  :straight t)
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Keybinds
 ;; ---------
 ;; For now, just a few simple changes.
