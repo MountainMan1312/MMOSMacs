@@ -431,6 +431,14 @@
   (mm/org-font-setup))
 
 
+;; Make org heading bullets look nicer
+(use-package org-bullets
+  :straight t
+  :hook (org-mode . org-bullets-mode)
+  :custom
+  (org-bullets-bullet-list '("•")))
+
+
 
 
 ;; ---------------------------------------------------------------------
