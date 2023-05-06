@@ -117,6 +117,17 @@
 (load-theme 'jazz t)
 
 
+;; ---------------------------------
+;; Fonts
+;; -----
+;; For now I use Iosevka and Exo
+;; ---------------------------------
+
+(set-face-attribute 'default nil :font "Iosevka" :height 100)
+(set-face-attribute 'fixed-pitch nil :font "Iosevka" :height 100)
+(set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 100 :weight 'regular)
+
+
 
 
 ;; ---------------------------------------------------------------------
@@ -366,8 +377,59 @@
 ;; is the core of my PKMS system.
 ;; ---------------------------------
 
+;; Setup run every time a  buffer
+;; is opened.
+(defun mm/org-mode-setup ()
+  (org-indent-mode)
+  (auto-fill-mode)
+  (visual-line-mode)
+  (variable-pitch-mode))
+
+
+;; Org font stuff
+(defun mm/org-font-setup ()
+  ;; Replace hyphens in lists with dots
+  (font-lock-add-keywords 'org-mode
+                          '(("^ *\\([-]\\) "
+                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+  ;; Set font size per heading level
+  (dolist (face '((org-level-1 . 1.5)
+                  (org-level-2 . 1.4)
+                  (org-level-3 . 1.3)
+                  (org-level-4 . 1.2)
+                  (org-level-5 . 1.1)
+                  (org-level-6 . 1.1)
+                  (org-level-7 . 1.1)
+                  (org-level-8 . 1.1)))
+    (set-face-attribute (car face) nil :font "DejaVu Sans" :weight 'regular :height (cdr face)))
+
+
+  ;; Ensure anything that should be
+  ;; fixed-pitch actually is.
+  (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-table nil    :inherit 'fixed-pitch)
+  (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil     :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-table nil    :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-checkbox nil  :inherit 'fixed-pitch)
+  (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+  (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
+
+
+;; `org' configuration
 (use-package org
-  :straight t)
+  :straight t
+  :hook (org-mode . mm/org-mode-setup)
+  :config
+  (setq org-ellipsis " ►"
+        org-hide-leading-stars t
+        org-adapt-indentation t
+        org-support-shift-select 'always)
+  (mm/org-font-setup))
 
 
 
