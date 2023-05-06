@@ -123,8 +123,8 @@
 ;; For now I use Iosevka and Exo
 ;; ---------------------------------
 
-(set-face-attribute 'default nil :font "Iosevka" :height 100)
-(set-face-attribute 'fixed-pitch nil :font "Iosevka" :height 100)
+(set-face-attribute 'default nil :font "Iosevka" :height 120)
+(set-face-attribute 'fixed-pitch nil :font "Iosevka" :height 120)
 (set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 120 :weight 'regular)
 
 
