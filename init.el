@@ -125,8 +125,7 @@
 
 (set-face-attribute 'default nil :font "Iosevka" :height 100)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka" :height 100)
-(set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 100 :weight 'regular)
-
+(set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 120 :weight 'regular)
 
 
 
@@ -394,10 +393,10 @@
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
   ;; Set font size per heading level
-  (dolist (face '((org-level-1 . 1.5)
-                  (org-level-2 . 1.4)
+  (dolist (face '((org-level-1 . 1.7)
+                  (org-level-2 . 1.5)
                   (org-level-3 . 1.3)
-                  (org-level-4 . 1.2)
+                  (org-level-4 . 1.1)
                   (org-level-5 . 1.1)
                   (org-level-6 . 1.1)
                   (org-level-7 . 1.1)
