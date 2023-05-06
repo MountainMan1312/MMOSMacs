@@ -224,8 +224,13 @@
 ;; It helps to know where you are
 ;; ---------------------------------
 
+;; Display line/column numbers
 (column-number-mode)
 (global-display-line-numbers-mode t)
+
+;; Disable line numbers in specific modes
+(dolist (mode '(org-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
 ;; ---------------------------------
