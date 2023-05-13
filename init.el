@@ -116,6 +116,8 @@
 
 (load-theme 'jazz t)
 
+(set-background-color "black")
+
 
 ;; ---------------------------------
 ;; Fonts
@@ -125,7 +127,8 @@
 
 (set-face-attribute 'default nil :font "Iosevka" :height 120)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka" :height 120)
-(set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 120 :weight 'regular)
+;;(set-face-attribute 'variable-pitch nil :font "Exo" :height 120 :weight 'regular)
+(set-face-attribute 'variable-pitch nil :font "-UKWN-Exo 2-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1" :height 120)
 
 
 
@@ -229,7 +232,8 @@
 (global-display-line-numbers-mode t)
 
 ;; Disable line numbers in specific modes
-(dolist (mode '(org-mode-hook))
+(dolist (mode '(org-mode-hook
+                org-agenda-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
@@ -370,7 +374,9 @@
 ;; --------------------------------------------
 ;; Using `org', `org-roam', and a note-hierarchy I've developed over
 ;; several years of trial-and-error, I keep all my notes in a logical
-;; organized collection.
+;; organized collection. I feel this knowledgebase system can handle
+;; almost any bit of information I can throw at it, and it is flexible
+;; enough to adapt when I find new things it can't handle.
 ;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
@@ -385,7 +391,6 @@
 ;; is opened.
 (defun mm/org-mode-setup ()
   (org-indent-mode)
-  (auto-fill-mode)
   (visual-line-mode)
   (variable-pitch-mode))
 
@@ -396,32 +401,37 @@
   (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-
-  ;; Set font size per heading level
-  (dolist (face '((org-level-1 . 1.7)
-                  (org-level-2 . 1.5)
+  ;; Set font sizes
+  (dolist (face '((org-level-1 . 1.5)
+                  (org-level-2 . 1.4)
                   (org-level-3 . 1.3)
-                  (org-level-4 . 1.1)
+                  (org-level-4 . 1.2)
                   (org-level-5 . 1.1)
                   (org-level-6 . 1.1)
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil :font "DejaVu Sans" :weight 'regular :height (cdr face)))
-
-
+    (set-face-attribute (car face) nil
+                        :font "-UKWN-Exo 2-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1"
+                        :weight 'regular
+                        :height (cdr face))
   ;; Ensure anything that should be
   ;; fixed-pitch actually is.
-  (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-table nil    :inherit 'fixed-pitch)
-  (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
-  (set-face-attribute 'org-code nil     :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-table nil    :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-table nil :inherit '(shadow fixed-pitch))
   (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
   (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
   (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
   (set-face-attribute 'org-checkbox nil  :inherit 'fixed-pitch)
-  (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
-  (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
+  (set-face-attribute 'org-time-grid nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-scheduled nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-agenda-structure nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-agenda-date nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-agenda-date-today nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-agenda-current-time nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-agenda-calendar-event nil :inherit 'fixed-pitch)))
 
 
 ;; `org' configuration
@@ -429,11 +439,15 @@
   :straight t
   :hook (org-mode . mm/org-mode-setup)
   :config
+  (mm/org-font-setup)
   (setq org-ellipsis " ►"
         org-hide-leading-stars t
         org-adapt-indentation t
-        org-support-shift-select 'always)
-  (mm/org-font-setup))
+        org-support-shift-select 'always
+        org-return-follows-link t)
+  (advice-add 'org-refile :after 'org-save-all-org-buffers)
+  :bind
+  ("C-c t l" . org-toggle-link-display))
 
 
 ;; Make org heading bullets look nicer
@@ -442,6 +456,196 @@
   :hook (org-mode . org-bullets-mode)
   :custom
   (org-bullets-bullet-list '("•")))
+
+
+;; Auto-show emphasis markers on hover
+(use-package org-appear
+  :straight t
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-hide-emphasis-markers t
+        org-appear-autolinks t
+        org-appear-autosubmarkers t))
+
+
+;; Show link hints to make following links easier
+(use-package link-hint
+  :straight t
+  :bind
+  ("C-c l o" . link-hint-open-link)
+  ("C-c l c" . link-hint-copy-link))
+
+
+;; ---------------------------------
+;; `org-roam'
+;; ----------
+;; Org roam adds a ton of PKMS
+;; functionality to org.
+;; ---------------------------------
+
+;; Define function to insert a link to a node without opening it
+(defun mm/org-roam-node-insert-immediate (arg &rest args)
+  "This version of `org-roam-node-insert' inserts a node without opening it."
+  (interactive "P")
+  (let ((args (cons arg args))
+        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                  '(:immediate-finish)))))
+    (apply #'org-roam-node-insert args)))
+
+
+;; Add Dendron-like note refactoring functionality
+;; This was taken from https://github.com/vicrdguez/dendroam
+(cl-defmethod mm/org-roam-node-current-file (node)
+  (file-name-base (org-roam-node-file node)))
+
+(cl-defmethod mm/org-roam-node-hierarchy-title (node)
+  (capitalize (car (last (split-string (org-roam-node-title node)
+                                       "\\.")))))
+
+(defun mm/org-roam-refactor-file ()
+  (interactive)
+  (let* ((initial-file (buffer-file-name))
+         (initial-slug (file-name-base initial-file))
+         (new-slug (read-string "Refactor: " initial-slug))
+         (new-file (concat
+                    (expand-file-name new-slug org-roam-directory)
+                    ".org")))
+    (rename-file initial-file new-file)
+    (kill-current-buffer)
+    (find-file new-file)))
+
+(cl-defmethod mm/org-roam-node-hierarchy (node)
+  (funcall 'mm/org-roam-format-hierarchy (org-roam-node-file node)))
+
+(cl-defmethod mm/org-roam-node-current-file (node)
+  (file-name-base (buffer-file-name)))
+
+(defun mm/org-roam-get-same-hierarchy-files (hierarchy)
+  "Gets all the nodes that share the same HIERARCHY totally or partially"
+  (let ((files (mapcar #'car (org-roam-db-query [:select [file]
+                                                         :from nodes
+                                                         :where (like file $r1)]
+                                                (concat "%" hierarchy "%"))))) files))
+
+(defun mm/org-roam-refactor-hierarchy (&optional current)
+  (interactive)
+  (let*
+      ((initial-file (file-name-nondirectory (buffer-file-name)))
+       (initial-slug (file-name-base initial-file))
+       (new-slug (file-name-base (read-string "Refactor: " initial-slug)))
+       (initial-slug-no-title
+        (file-name-base initial-slug))
+       (files-to-upd (if current `(,initial-file)
+                       (mm/org-roam-get-same-hierarchy-files
+                        initial-slug-no-title))))
+    (dolist (file files-to-upd)
+      (let ((new-file
+             (replace-regexp-in-string initial-slug-no-title new-slug file)))
+        (rename-file file new-file)
+        (if (equal buffer-file-name file)
+            (progn
+              (kill-current-buffer)
+              (find-file new-file)))))))
+
+
+;; `org-roam' configuration
+(use-package org-roam
+  :straight t
+  :custom
+  (org-roam-directory (file-truename "~/kb"))
+  (make-directory org-roam-directory 'parents)
+  (org-roam-db-location (concat org-roam-directory "/org-roam.db"))
+  (org-roam-capture-templates
+   '(("d" "default" plain "%?"
+      :unnarrowed t
+      :if-new (file+head "${title}.org"
+                         "#+TITLE:"))))
+  (org-roam-dailies-capture-templates
+   '(("d" "default" plain "%?"
+      :unnarrowed t
+      :if-new (file+head "daily.%<%Y.%m.%d>.org"
+                         "#+TITLE: Daily Log for %<%Y-%m-%d>\n"))))
+  (org-roam-complete-everywhere t)
+  :config
+  (org-roam-setup)
+  (org-roam-db-autosync-mode)
+  (require 'org-roam-dailies)
+  (setq org-roam-dailies-directory "")
+  :bind (("C-c n f"   . org-roam-node-find)
+         ("C-c n c"   . org-roam-capture)
+         ("C-c n d t" . org-roam-dailies-goto-today)
+         ("C-c n d y" . org-roam-dailies-goto-yesterday)
+         ("C-c n i"   . mm/org-roam-node-insert-immediate)
+         ("C-c n I"   . org-roam-node-insert)
+         ("C-c n u"   . org-roam-update-org-id-locations)
+         ("C-c n r h" . mm/org-roam-refactor-hierarchy)
+         ("C-c n r f" . mm/org-roam-refactor-file)))
+
+
+;; ---------------------------------
+;; Task / Time Management
+;; ----------------------
+;; I track everything in org. It
+;; makes it easier to remember
+;; things, which is handy because I
+;; am quite forgetful.
+;; ---------------------------------
+
+;; Agenda configuration
+(use-package org
+  :config
+  (setq org-agenda-start-with-log-mode t
+        org-agenda-files '("~/kb/agenda.org")
+        org-todo-keywords'((sequence "TODO(t)" "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)" "REVIEW(re)" "|" "DONE(d)" "CANCELED(c)")
+                           (sequence "EVENT(e)" "|" "MISSED_EVENT(me)" "ATTENDED_EVENT(ae)")
+                           (sequence "APPT(ap)" "|" "MISSED_APPT(ma)" "ATTENDED_APPT(aa)")
+                           (sequence "REMINDER(rm)"))
+        org-agenda-span 7
+        org-agenda-start-day "0d"
+        org-agenda-start-on-weekday nil
+        org-agenda-use-time-grid t
+        org-agenda-time-grid (quote ((daily today remove-match)
+                                     (0 100 200 300 400 500 600 700 800 900
+                                        1000 1100 1200 1300 1400 1500 1600
+                                        1700 1800 1900 2000 2100 2200 2300)
+                                     "......." "."))
+        org-agenda-include-diary t
+        org-agenda-show-future-repeats nil
+        org-agenda-repeating-timestamp-show-all nil
+        org-agenda-skip-scheduled-if-done t
+        org-agenda-skip-deadline-if-done t
+        org-agenda-show-done-always-green nil
+        org-agenda-compact-blocks t
+        org-log-done 'time
+        org-log-into-drawer t)
+  (require 'org-habit)
+  (add-to-list 'org-modules 'org-habit)
+  (setq org-habit-show-habits t
+        org-habit-show-habits-only-for-today nil
+        org-habit-show-all-today nil
+        org-habit-graph-column 60
+        org-habit-following-days 1
+        org-habit-preceding-days 21)
+  :bind (("C-c a" . org-agenda-list)))
+
+
+;; Update agenda periodically every `mm/refresh-agenda-time-seconds' seconds.
+;; This was taken from https://emacs.stackexchange.com/a/68767/38877
+(defvar mm/refresh-agenda-time-seconds 15)
+(defvar mm/refresh-agenda-timer nil
+  "Timer for `mm/refresh-agenda-timer-function' to reschedule itself, or NIL")
+(defun mm/refresh-agenda-timer-function ()
+  "If the user types a command while `mm/refresh-agenda-timer' is active, the next time this function is called from it's main idle timer, deactivate `mm/refresh-agenda-timer'."
+  (when mm/refresh-agenda-timer
+    (cancel-timer mm/refresh-agenda-timer))
+  ;;(lambda () (save-window-excursion (org-agenda nil "a")))
+  (save-window-excursion (org-agenda nil "a"))
+  (setq mm/refresh-agenda-timer
+        (run-with-idle-timer
+         (time-add (current-idle-time) mm/refresh-agenda-time-seconds)
+         nil
+         'mm/refresh-agenda-timer-function)))
+(run-with-idle-timer mm/refresh-agenda-time-seconds t 'mm/refresh-agenda-timer-function)
 
 
 
