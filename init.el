@@ -709,3 +709,19 @@
 ;; ---------------------------------
 
 (defalias 'yes-or-no-p 'y-or-n-p)
+
+
+;; ---------------------------------
+;; Improved Help buffer
+;; --------------------
+;; Helpful provides a more
+;; informative Help buffer.
+;; ---------------------------------
+
+(use-package helpful
+  :straight t
+  :bind (("C-h f" . helpful-callable)
+         ("C-h k" . helpful-key)
+         ("C-h p" . helpful-at-point)
+         ("C-h v" . helpful-variable)
+         ("C-h x" . helpful-command)))
