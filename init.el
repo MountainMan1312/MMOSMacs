@@ -127,8 +127,7 @@
 
 (set-face-attribute 'default nil :font "Iosevka" :height 120)
 (set-face-attribute 'fixed-pitch nil :font "Iosevka" :height 120)
-;;(set-face-attribute 'variable-pitch nil :font "Exo" :height 120 :weight 'regular)
-(set-face-attribute 'variable-pitch nil :font "-UKWN-Exo 2-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1" :height 120)
+(set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 120 :weight 'regular)
 
 
 
@@ -411,7 +410,7 @@
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil
-                        :font "-UKWN-Exo 2-normal-normal-normal-*-*-*-*-*-*-0-iso10646-1"
+                        :font "DejaVu Sans"
                         :weight 'regular
                         :height (cdr face))
   ;; Ensure anything that should be
