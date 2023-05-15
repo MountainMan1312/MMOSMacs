@@ -590,6 +590,7 @@
 ;; am quite forgetful.
 ;; ---------------------------------
 
+
 ;; Agenda configuration
 (use-package org
   :config
@@ -625,7 +626,8 @@
         org-habit-graph-column 60
         org-habit-following-days 1
         org-habit-preceding-days 21)
-  :bind (("C-c a" . org-agenda-list)))
+  :bind (("C-c a"   . org-agenda-list)
+         ("C-c n a" . (lambda () (interactive) (find-file "~/kb/agenda.org")))))
 
 
 ;; Update agenda periodically every `mm/refresh-agenda-time-seconds' seconds.
