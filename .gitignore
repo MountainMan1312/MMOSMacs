@@ -1,4 +1,6 @@
 auto-save-list/
 eln-cache/
+projectile.cache
+projectile-known-projects.eld
 straight/
 .org-id-locations

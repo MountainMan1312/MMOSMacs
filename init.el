@@ -378,7 +378,9 @@
   :straight t
   :config
   (projectile-mode)
-  (setq projectile-project-search-path '("~/Projects"))
+  (setq projectile-project-search-path '("~/Projects")
+        projectile-known-projects-file "~/.emacs.d/projectile-known-projects.eld"
+        projectile-cache-file "~/.emacs.d/projectile.cache")
   :bind-keymap ("C-c p" . projectile-command-map))
 
 
