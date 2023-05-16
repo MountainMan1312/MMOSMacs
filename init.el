@@ -327,9 +327,10 @@
 
 
 ;; ---------------------------------------------------------------------
-;;; File Management
-;; ----------------
-;; Everything to do with file or directory management goes here.
+;;; File, project, & repository management
+;; ---------------------------------------
+;; This section contains everything to do with file, project, & repo
+;; management. This includes `magit' and `projectile'.
 ;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
@@ -364,6 +365,21 @@
 ;; ---------------------------------
 
 (setq create-lockfiles nil)
+
+
+;; ---------------------------------
+;; Project management
+;; ------------------
+;; `Projectile' provides features
+;; for operating on a project level.
+;; ---------------------------------
+
+(use-package projectile
+  :straight t
+  :config
+  (projectile-mode)
+  (setq projectile-project-search-path '("~/Projects"))
+  :bind-keymap ("C-c p" . projectile-command-map))
 
 
 
