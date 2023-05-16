@@ -1,6 +1,7 @@
 auto-save-list/
 bookmarks
 eln-cache/
+org-roam.db
 projectile.cache
 projectile-bookmarks.eld
 projectile-known-projects.eld

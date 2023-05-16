@@ -585,7 +585,7 @@
   :custom
   (org-roam-directory (file-truename "~/kb"))
   (make-directory org-roam-directory 'parents)
-  (org-roam-db-location (concat org-roam-directory "/org-roam.db"))
+  (org-roam-db-location (concat user-emacs-directory "/org-roam.db"))
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
       :unnarrowed t
