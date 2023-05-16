@@ -1,4 +1,9 @@
 auto-save-list/
+bookmarks
 eln-cache/
+projectile.cache
+projectile-bookmarks.eld
+projectile-known-projects.eld
 straight/
+transient/
 .org-id-locations
