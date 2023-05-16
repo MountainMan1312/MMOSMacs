@@ -628,9 +628,12 @@
   :config
   (setq org-agenda-start-with-log-mode t
         org-agenda-files '("~/kb/agenda.org")
-        org-todo-keywords'((sequence "TODO(t)" "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)" "REVIEW(re)" "|" "DONE(d)" "CANCELED(c)")
+        org-todo-keywords'((sequence "TODO(t)" "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)"
+                                     "REVIEW(re)" "|" "DONE(d)" "CANCELED(ca)")
                            (sequence "EVENT(e)" "|" "MISSED_EVENT(me)" "ATTENDED_EVENT(ae)")
                            (sequence "APPT(ap)" "|" "MISSED_APPT(ma)" "ATTENDED_APPT(aa)")
+                           (sequence "CLASS(cl)" "|" "ATTENDED_CLASS(ac)"
+                                     "MISSED_CLASS(mc)" "CANCELED_CLASS(cc)")
                            (sequence "REMINDER(rm)"))
         org-agenda-span 7
         org-agenda-start-day "0d"
