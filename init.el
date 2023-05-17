@@ -130,6 +130,35 @@
 (set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 120 :weight 'regular)
 
 
+;; ---------------------------------
+;; Icons
+;; -----
+;; Icons make it easy to recongnize
+;; things with memorable logos.
+;; ---------------------------------
+
+;; All the icons
+(use-package all-the-icons
+  :straight t)
+(all-the-icons-install-fonts t)
+
+;; Add icons to dired buffers
+(use-package all-the-icons-dired
+  :straight t
+  :hook (dired-mode . all-the-icons-dired-mode))
+
+;; Add icons to completion candidates
+(use-package all-the-icons-completion
+  :straight t)
+(add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)
+
+;; Add icons to ivy menus
+(use-package all-the-icons-ivy
+  :straight t
+  :init (add-hook 'after-init-hook 'all-the-icons-ivy-setup))
+
+
+
 
 ;; ---------------------------------------------------------------------
 ;;; Completion
