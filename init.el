@@ -436,6 +436,17 @@
 (setq create-lockfiles nil)
 
 
+;; --------------------------------
+;; Auto-reload changed files
+;; -------------------------
+;; When files are changed on disk
+;; externally, emacs should reload
+;; those files.
+;; ---------------------------------
+
+(global-auto-revert-mode t)
+
+
 ;; ---------------------------------
 ;; Project management
 ;; ------------------
