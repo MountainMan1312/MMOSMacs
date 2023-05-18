@@ -59,6 +59,25 @@
 
 
 ;; ---------------------------------------------------------------------
+;; Performance hacks
+;; -----------------
+;; These hacks subjectively make Emacs perform "better"
+;; ---------------------------------------------------------------------
+
+;; Garbage Collector Magic Hack
+(use-package gcmh
+  :straight t
+  :defer t
+  :init
+  (setq gcmh-idle-delay 15
+        gcmh-idle-delay-factor 10
+        gcmh-high-cons-threshold (* 16 (* 1024 1024)))  ;16mb
+  :hook (after-init-hook . gcmh-mode))
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Graphical Environment
 ;; ----------------------
 ;; MMOSMacs is intended to be my entire Desktop Environment.
