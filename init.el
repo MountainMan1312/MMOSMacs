@@ -64,7 +64,12 @@
 ;; These hacks subjectively make Emacs perform "better"
 ;; ---------------------------------------------------------------------
 
+;; ---------------------------------
+;; GCMH
+;; ----
 ;; Garbage Collector Magic Hack
+;; ---------------------------------
+
 (use-package gcmh
   :straight t
   :defer t
