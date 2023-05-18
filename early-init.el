@@ -7,6 +7,26 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Performance hacks
+;; ------------------
+;; These hacks subjectively make Emacs perform "better"
+;; ---------------------------------------------------------------------
+
+
+;; ---------------------------------
+;; GCMH
+;; ----
+;; Garbage Collector Magic Hack
+;; ---------------------------------
+
+;; Defer garbage collection until later in the startup process
+(setq gc-cons-threshold most-positive-fixnum
+      gc-cons-percentage 0.6)
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; UI Adjustments
 ;; ---------------
 ;; The primary goal of this Section is to prevent Emacs from flashing or
