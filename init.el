@@ -75,6 +75,19 @@
   :hook (after-init-hook . gcmh-mode))
 
 
+;; ---------------------------------
+;; Async
+;; -----
+;; Asynchronous processing of things
+;; ---------------------------------
+
+;; Async package
+(use-package async
+  :straight t
+  :config
+  (setq async-bytecomp-package-mode t))
+
+
 
 
 ;; ---------------------------------------------------------------------
