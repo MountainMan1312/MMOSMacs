@@ -820,6 +820,23 @@
 
 
 ;; ---------------------------------
+;; Improved HOME key behavior
+;; --------------------------
+;; Something bugs me about HOME
+;; moving POINT to the actual
+;; beginning of the line. I want it
+;; to go to the beginning of the
+;; text (i.e. follow indentation)
+;; ---------------------------------
+
+;; Make home key respect indentation
+(global-set-key (kbd "<home>") 'beginning-of-line-text)
+
+;; Use Shift + HOME for old behavior
+(global-set-key (kbd "S-<home>") 'beginning-of-visual-line)
+
+
+;; ---------------------------------
 ;; Improved Help buffer
 ;; --------------------
 ;; Helpful provides a more
