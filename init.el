@@ -260,7 +260,10 @@
 
 (use-package marginalia
   :straight t
-  :init (marginalia-mode))
+  :config
+  (setq marginalia-field-width 120
+        marginalia-max-relative-age 0)
+  :hook (emacs-startup-hook . marginalia-mode))
 
 
 ;; ---------------------------------
