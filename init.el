@@ -177,7 +177,6 @@
 ;; All the icons
 (use-package all-the-icons
   :straight t)
-(all-the-icons-install-fonts t)
 
 ;; Add icons to dired buffers
 (use-package all-the-icons-dired
@@ -261,9 +260,9 @@
 (use-package marginalia
   :straight t
   :config
-  (setq marginalia-field-width 120
-        marginalia-max-relative-age 0)
-  :hook (emacs-startup-hook . marginalia-mode))
+  (setq marginalia-field-width 120)
+  :bind ("M-a" . marginalia-cycle)
+  :init (marginalia-mode))
 
 
 ;; ---------------------------------
