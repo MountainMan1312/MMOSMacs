@@ -276,7 +276,10 @@
 (use-package orderless
   :straight t
   :config
-  (setq completion-styles '(orderless basic)
+  (setq completion-styles '(orderless
+                            orderless-initialism
+                            orderless-flex
+                            orderless-prefixes)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
 
