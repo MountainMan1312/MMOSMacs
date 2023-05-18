@@ -162,9 +162,9 @@
 ;; For now I use Iosevka and Exo
 ;; ---------------------------------
 
-(set-face-attribute 'default nil :font "Iosevka" :height 120)
-(set-face-attribute 'fixed-pitch nil :font "Iosevka" :height 120)
-(set-face-attribute 'variable-pitch nil :font "DejaVu Sans" :height 120 :weight 'regular)
+(set-face-attribute 'default nil :font "JetBrains Mono" :height 100)
+(set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 100)
+(set-face-attribute 'variable-pitch nil :font "Noto Sans" :height 110 :weight 'regular)
 
 
 ;; ---------------------------------
@@ -502,16 +502,16 @@
                           '(("^ *\\([-]\\) "
                              (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
   ;; Set font sizes
-  (dolist (face '((org-level-1 . 1.5)
-                  (org-level-2 . 1.4)
-                  (org-level-3 . 1.3)
-                  (org-level-4 . 1.2)
+  (dolist (face '((org-level-1 . 1.1)
+                  (org-level-2 . 1.1)
+                  (org-level-3 . 1.1)
+                  (org-level-4 . 1.1)
                   (org-level-5 . 1.1)
                   (org-level-6 . 1.1)
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil
-                        :font "DejaVu Sans"
+                        :font "Noto Sans"
                         :weight 'regular
                         :height (cdr face))
   ;; Ensure anything that should be
