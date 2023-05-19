@@ -550,7 +550,8 @@
   :hook (org-mode . mm/org-mode-setup)
   :config
   (mm/org-font-setup)
-  (setq org-ellipsis " ►"
+  (setq org-startup-folded t
+        org-ellipsis " ►"
         org-hide-leading-stars t
         org-adapt-indentation t
         org-support-shift-select 'always
