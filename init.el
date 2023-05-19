@@ -383,13 +383,23 @@
 
 
 ;; ---------------------------------
-;; Type over selected text
+;; Selection
 ;; -----------------------
-;; Typing over selected text should
-;; delete the selected text
+;; Efficient selection is one of the
+;; 47 totems of efficiency.
 ;; ---------------------------------
 
+;; Typing over selected text deletes
+;; the selected text
 (delete-selection-mode t)
+
+
+;; Expand region by semantic units
+(use-package expand-region
+  :straight t
+  :config
+  (setq expand-region-subword-enabled t)
+  :bind ("M-=" . er/expand-region))
 
 
 
