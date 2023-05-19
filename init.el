@@ -868,3 +868,22 @@
          ("C-h p" . helpful-at-point)
          ("C-h v" . helpful-variable)
          ("C-h x" . helpful-command)))
+
+
+
+
+;; ---------------------------------------------------------------------
+;;; Final steps
+;; ------------
+;; These are the final steps before MMOSMacs is initialized
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Start Emacs server
+;; ------------------
+;; Fuck it, it's the end of the
+;; file, I'm not writing these
+;; stupid decriptions anymore!
+;; ---------------------------------
+
+(server-start)
