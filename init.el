@@ -851,7 +851,7 @@
 (global-set-key (kbd "<home>") 'beginning-of-line-text)
 
 ;; Use Shift + HOME for old behavior
-(global-set-key (kbd "S-<home>") 'beginning-of-visual-line)
+(global-set-key (kbd "C-<home>") 'beginning-of-visual-line)
 
 
 ;; ---------------------------------
