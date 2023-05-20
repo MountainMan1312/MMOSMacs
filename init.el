@@ -855,6 +855,23 @@
 
 
 ;; ---------------------------------
+;; Insert date/time at POINT
+;; -------------------------
+;; [YYYY-MM-DD HH:mm]
+;; ---------------------------------
+
+(defvar mm/date-time-format "[%Y-%m-%d %H:%M]"
+  "Format of the date to insert with `mm/insert-date-time' function. See help of `format-time-string' for alternative formats.")
+
+(defun mm/insert-date-time ()
+  "Insert the current date time in the format of `mm/date-time-format' at POINT."
+  (interactive)
+  (insert (format-time-string mm/date-time-format (current-time))))
+p
+(global-set-key (kbd "C-c d") (lambda () (interactive) (mm/insert-date-time)))
+
+
+;; ---------------------------------
 ;; Improved Help buffer
 ;; --------------------
 ;; Helpful provides a more
