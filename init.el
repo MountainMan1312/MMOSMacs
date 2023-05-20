@@ -867,7 +867,7 @@
   "Insert the current date time in the format of `mm/date-time-format' at POINT."
   (interactive)
   (insert (format-time-string mm/date-time-format (current-time))))
-p
+
 (global-set-key (kbd "C-c d") (lambda () (interactive) (mm/insert-date-time)))
 
 
