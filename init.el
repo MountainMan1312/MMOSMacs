@@ -117,7 +117,7 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (menu-bar-mode -1)
-(set-fringe-mode -1)
+(set-fringe-mode 5)
 (setq ring-bell-function 'ignore)
 (setq use-dialog-box nil
       inhibit-startup-message t
@@ -485,6 +485,19 @@
   :straight t
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+
+
+;; ---------------------------------
+;; Highlight diff in fringe
+;; ------------------------
+;; In buffers for git-controlled
+;; files, highlight changed lines in
+;; the fringe.
+;; ---------------------------------
+
+(use-package diff-hl
+  :straight t
+  :config (diff-hl-flydiff-mode))
 
 
 
