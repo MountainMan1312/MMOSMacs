@@ -609,8 +609,7 @@
 (use-package link-hint
   :straight t
   :bind
-  ("C-c l o" . link-hint-open-link)
-  ("C-c l c" . link-hint-copy-link))
+  ("C-c n l o" . link-hint-open-link))
 
 
 ;; ---------------------------------
@@ -809,6 +808,18 @@
 (use-package flycheck
   :straight t
   :init (global-flycheck-mode))
+
+
+;; ---------------------------------
+;; Language Server Protocol (LSP)
+;; ------------------------------
+;; Protocol for interaction between
+;; Emacs and language servers.
+;; ---------------------------------
+
+(use-package lsp-mode
+  :straight t
+  :init (setq lsp-keymap-prefix "C-c l"))
 
 
 
