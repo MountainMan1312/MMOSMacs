@@ -819,7 +819,7 @@
 ;; Structured editing of S-expr data
 (use-package paredit
   :straight t
-  :hook (emacs-lisp-mode . paredit-mode))
+  :hook ((emacs-lisp-mode ielm-mode) . paredit-mode))
 
 
 
