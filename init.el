@@ -821,6 +821,20 @@
 ;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
+;; Keybind hints
+;; -------------
+;; Show hints for available keybinds
+;; as you type them.
+;; ---------------------------------
+
+(use-package which-key
+  :straight t
+  :init (which-key-mode)
+  :config
+  (setq which-key-idle-delay 1.5))
+
+
+;; ---------------------------------
 ;; Fix ESC behavior
 ;; ----------------
 ;; The default behavior of the ESC
