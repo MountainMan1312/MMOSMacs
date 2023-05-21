@@ -497,9 +497,9 @@
 
 (use-package diff-hl
   :straight t
-  :config
-  (global-diff-hl-mode)
-  (diff-hl-flydiff-mode))
+  :hook
+  (prog-mode    . diff-hl-mode)
+  (diff-hl-mode . diff-hl-flydiff-mode))
 
 
 
