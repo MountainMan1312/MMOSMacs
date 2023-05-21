@@ -792,6 +792,27 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Development Environment
+;; ------------------------
+;; MMOSMacs is intended to serve as a full-featured IDE
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Syntax checking
+;; ---------------
+;; I'd like to know when I'm making
+;; a mistake.
+;; ---------------------------------
+
+;; Flycheck
+(use-package flycheck
+  :straight t
+  :init (global-flycheck-mode))
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Keybinds
 ;; ---------
 ;; For now, just a few simple changes.
