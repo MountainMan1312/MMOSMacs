@@ -467,7 +467,7 @@
 (use-package projectile
   :straight t
   :config
-  (projectile-mode)
+  (add-hook 'after-init-hook 'projectile-global-mode)
   (setq projectile-project-search-path '("~/Projects")
         projectile-known-projects-file "~/.emacs.d/projectile-known-projects.eld"
         projectile-cache-file "~/.emacs.d/projectile.cache")
