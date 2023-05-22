@@ -117,7 +117,7 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (menu-bar-mode -1)
-(set-fringe-mode -1)
+(set-fringe-mode 5)
 (setq ring-bell-function 'ignore)
 (setq use-dialog-box nil
       inhibit-startup-message t
@@ -300,7 +300,8 @@
 
 ;; Disable line numbers in specific modes
 (dolist (mode '(org-mode-hook
-                org-agenda-mode-hook))
+                org-agenda-mode-hook
+                helpful-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
@@ -466,7 +467,7 @@
 (use-package projectile
   :straight t
   :config
-  (projectile-mode)
+  (add-hook 'after-init-hook 'projectile-global-mode)
   (setq projectile-project-search-path '("~/Projects")
         projectile-known-projects-file "~/.emacs.d/projectile-known-projects.eld"
         projectile-cache-file "~/.emacs.d/projectile.cache")
@@ -484,7 +485,27 @@
 (use-package magit
   :straight t
   :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :config
+  (setq magit-diff-refine-hunk t
+        magit-diff-paint-whitespace t
+        magit-diff-paint-whitespace-lines t
+        magit-diff-highlight-trailing t))
+
+
+;; ---------------------------------
+;; Highlight diff in fringe
+;; ------------------------
+;; In buffers for git-controlled
+;; files, highlight changed lines in
+;; the fringe.
+;; ---------------------------------
+
+(use-package diff-hl
+  :straight t
+  :hook
+  (prog-mode    . diff-hl-mode)
+  (diff-hl-mode . diff-hl-flydiff-mode))
 
 
 
@@ -593,8 +614,7 @@
 (use-package link-hint
   :straight t
   :bind
-  ("C-c l o" . link-hint-open-link)
-  ("C-c l c" . link-hint-copy-link))
+  ("C-c n l o" . link-hint-open-link))
 
 
 ;; ---------------------------------
@@ -777,11 +797,109 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Development Environment
+;; ------------------------
+;; MMOSMacs is intended to serve as a full-featured IDE
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Syntax checking
+;; ---------------
+;; I'd like to know when I'm making
+;; a mistake.
+;; ---------------------------------
+
+;; Flycheck is activated by specific language modes.
+;; See `:hook's in language modes below to see which ones use it.
+(use-package flycheck
+  :straight t
+  :defer t)
+
+
+;; ---------------------------------
+;; Language Server Protocol (LSP)
+;; ------------------------------
+;; Protocol for interaction between
+;; Emacs and language servers.
+;; ---------------------------------
+
+(use-package lsp-mode
+  :straight t
+  :init (setq lsp-keymap-prefix "C-c l"))
+
+
+;; ---------------------------------
+;; Emacs Lisp
+;; ----------
+;; The language we all know and love
+;; ---------------------------------
+
+(use-package elisp-mode
+  :straight (:type built-in)
+  :commands (emacs-lisp-mode)
+  :hook (emacs-lisp-mode . flycheck-mode))
+
+
+;; ---------------------------------
+;; Common Lisp
+;; -----------
+;; The programmable language
+;; ---------------------------------
+
+;; Sly REPL
+(use-package sly
+  :straight t
+  :config
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
+
+;; Quicklisp integration for Sly
+(use-package sly-quicklisp
+  :straight t)
+
+
+;; ---------------------------------
+;; sh / Bash
+;; ----------
+;; Scripts for POSIX Shell and Bash.
+;;
+;; NOTE: The first time you use this
+;;       configuration, you must run
+;; `M-x lsp-install-server RET bash-ls RET'
+;; ---------------------------------
+
+;; Configure sh-mode
+(use-package sh-mode
+  :hook (sh-mode . flycheck-mode))
+
+;; Configure LSP for sh / Bash
+(use-package lsp-mode
+  :config
+  (setq lsp-bash-highlight-parsing-errors t))
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Keybinds
 ;; ---------
 ;; For now, just a few simple changes.
 ;; In the future there will be whole custom keybind system.
 ;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Keybind hints
+;; -------------
+;; Show hints for available keybinds
+;; as you type them.
+;; ---------------------------------
+
+(use-package which-key
+  :straight t
+  :init (which-key-mode)
+  :config
+  (setq which-key-idle-delay 1.5
+        which-key-side-window-max-height 5))
+
 
 ;; ---------------------------------
 ;; Fix ESC behavior
