@@ -485,7 +485,12 @@
 (use-package magit
   :straight t
   :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  :config
+  (setq magit-diff-refine-hunk t
+        magit-diff-paint-whitespace t
+        magit-diff-paint-whitespace-lines t
+        magit-diff-highlight-trailing t))
 
 
 ;; ---------------------------------
