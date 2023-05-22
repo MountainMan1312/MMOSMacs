@@ -846,10 +846,15 @@
 ;; The programmable language
 ;; ---------------------------------
 
+;; Sly REPL
 (use-package sly
   :straight t
   :config
   (setq inferior-lisp-program "/usr/bin/sbcl"))
+
+;; Quicklisp integration for Sly
+(use-package sly-quicklisp
+  :straight t)
 
 
 ;; ---------------------------------
