@@ -806,8 +806,7 @@
 
 ;; Flycheck
 (use-package flycheck
-  :straight t
-  :init (global-flycheck-mode))
+  :straight t)
 
 
 ;; ---------------------------------
@@ -820,6 +819,18 @@
 (use-package lsp-mode
   :straight t
   :init (setq lsp-keymap-prefix "C-c l"))
+
+
+;; ---------------------------------
+;; Emacs Lisp
+;; ----------
+;; The language we all know and love
+;; ---------------------------------
+
+(use-package elisp-mode
+  :straight (:type built-in)
+  :commands (emacs-lisp-mode)
+  :hook (emacs-lisp-mode . flycheck-mode))
 
 
 
