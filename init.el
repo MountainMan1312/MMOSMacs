@@ -358,6 +358,14 @@
 	            indicate-empty-lines t
 	            indicate-buffer-boundaries 'left)
 
+;; Don't show whitespace in specific places
+(dolist (hook '(comint-mode-hook
+                compilation-mode-hook
+                minibuffer-setup-hook
+                special-mode-hook
+                term-mode-hook))
+  (add-hook hook (lambda () (setq-local show-trailing-whitespace nil))))
+
 ;; Make files end with newline
 (setq-default require-final-newline t)
 
