@@ -897,7 +897,8 @@
   :straight t
   :init (which-key-mode)
   :config
-  (setq which-key-idle-delay 1.5))
+  (setq which-key-idle-delay 1.5
+        which-key-side-window-max-height 5))
 
 
 ;; ---------------------------------
