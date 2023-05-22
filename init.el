@@ -839,6 +839,7 @@
   :commands (emacs-lisp-mode)
   :hook (emacs-lisp-mode . flycheck-mode))
 
+
 ;; ---------------------------------
 ;; Common Lisp
 ;; -----------
