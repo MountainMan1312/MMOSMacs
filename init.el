@@ -839,6 +839,17 @@
   :commands (emacs-lisp-mode)
   :hook (emacs-lisp-mode . flycheck-mode))
 
+;; ---------------------------------
+;; Common Lisp
+;; -----------
+;; The programmable language
+;; ---------------------------------
+
+(use-package sly
+  :straight t
+  :config
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
+
 
 ;; ---------------------------------
 ;; sh / Bash
