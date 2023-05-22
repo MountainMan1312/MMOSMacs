@@ -809,9 +809,11 @@
 ;; a mistake.
 ;; ---------------------------------
 
-;; Flycheck
+;; Flycheck is activated by specific language modes.
+;; See `:hook's in language modes below to see which ones use it.
 (use-package flycheck
-  :straight t)
+  :straight t
+  :defer t)
 
 
 ;; ---------------------------------
@@ -836,6 +838,26 @@
   :straight (:type built-in)
   :commands (emacs-lisp-mode)
   :hook (emacs-lisp-mode . flycheck-mode))
+
+
+;; ---------------------------------
+;; sh / Bash
+;; ----------
+;; Scripts for POSIX Shell and Bash.
+;;
+;; NOTE: The first time you use this
+;;       configuration, you must run
+;; `M-x lsp-install-server RET bash-ls RET'
+;; ---------------------------------
+
+;; Configure sh-mode
+(use-package sh-mode
+  :hook (sh-mode . flycheck-mode))
+
+;; Configure LSP for sh / Bash
+(use-package lsp-mode
+  :config
+  (setq lsp-bash-highlight-parsing-errors t))
 
 
 
