@@ -704,6 +704,9 @@
   (org-roam-directory (file-truename "~/kb"))
   (make-directory org-roam-directory 'parents)
   (org-roam-db-location (concat user-emacs-directory "/org-roam.db"))
+  (org-roam-node-display-template (concat
+                                   (propertize "${file:*}" 'face 'org-meta-line)
+                                   (propertize "${title:*}" 'face 'org-document-title)))
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
       :unnarrowed t
