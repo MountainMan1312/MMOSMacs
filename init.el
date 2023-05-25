@@ -117,7 +117,6 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (menu-bar-mode -1)
-(set-fringe-mode 5)
 (setq ring-bell-function 'ignore)
 (setq use-dialog-box nil
       inhibit-startup-message t
@@ -511,6 +510,8 @@
 
 (use-package diff-hl
   :straight t
+  :config
+  (set-fringe-mode '(10 . 0))
   :hook
   (prog-mode    . diff-hl-mode)
   (diff-hl-mode . diff-hl-flydiff-mode))
