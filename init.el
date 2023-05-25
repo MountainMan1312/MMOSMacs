@@ -1014,3 +1014,15 @@
          ("C-h p" . helpful-at-point)
          ("C-h v" . helpful-variable)
          ("C-h x" . helpful-command)))
+
+
+;; ---------------------------------
+;; Comment / Uncomment region
+;; --------------------------
+;; Comment / uncomment entire
+;; regions instead of having to do
+;; each line separately.
+;; ---------------------------------
+
+(global-set-key (kbd "M-;") 'comment-line)
+(global-set-key (kbd "C-M-;") 'comment-or-uncomment-region)
