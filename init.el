@@ -710,7 +710,7 @@
   (org-roam-db-location (concat user-emacs-directory "/org-roam.db"))
   (org-roam-node-display-template (concat
                                    (propertize "${title:48}    " 'face 'org-document-title)
-                                   (propertize "${file:*}" 'face 'org-meta-line)))
+                                   (propertize "${file:*}" 'face 'org-roam-dim)))
   (org-roam-capture-templates
    '(("d" "default" plain "%?"
       :unnarrowed t
