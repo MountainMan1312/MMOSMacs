@@ -597,7 +597,8 @@
         org-return-follows-link t)
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
   :bind
-  ("C-c t l" . org-toggle-link-display))
+  ("C-c n l t" . org-toggle-link-display)
+  ("C-c t"     . org-agenda-todo))
 
 
 ;; Make org heading bullets look nicer
