@@ -196,11 +196,10 @@
 
 
 ;; ---------------------------------------------------------------------
-;;; Completion
-;; -----------
-;; Completion refers to the suggestions you get when you type a few
-;; characters in almost any modern IDE. MMOSMacs attempts to have
-;; completion in as many places as possible.
+;;; Completion & Correction
+;; ------------------------
+;; Completion and correction are the main source of my typing efficiency
+;; if I'm being honest.
 ;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
