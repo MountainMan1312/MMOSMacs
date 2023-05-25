@@ -312,7 +312,10 @@
 ;; ---------------------------------
 
 ;; Highlight current line
-(when window-system (add-hook 'prog-mode-hook 'hl-line-mode))
+(use-package hl-line
+  :straight (:type built-in)
+  :config (set-face-attribute 'hl-line nil :background "#111")
+  :hook (prog-mode . hl-line-mode))
 
 
 ;; ---------------------------------
