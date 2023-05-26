@@ -193,6 +193,21 @@
   :init (add-hook 'after-init-hook 'all-the-icons-ivy-setup))
 
 
+;; ---------------------------------
+;; Highlight stuff
+;; ---------------
+;; Sometimes it's hard to find
+;; things. Highlighting makes it a
+;; little easier.
+;; ---------------------------------
+
+;; Highlight current line
+(use-package hl-line
+  :straight (:type built-in)
+  :config (set-face-attribute 'hl-line nil :background "#111")
+  :hook (prog-mode . hl-line-mode))
+
+
 
 
 ;; ---------------------------------------------------------------------
