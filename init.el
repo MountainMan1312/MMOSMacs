@@ -76,8 +76,8 @@
   :init
   (setq gcmh-idle-delay 15
         gcmh-idle-delay-factor 10
-        gcmh-high-cons-threshold (* 16 1024)             ;16kb
-  :hook (after-init-hook . gcmh-mode))
+        gcmh-high-cons-threshold (* 16 1024)))             ;16kb
+(add-hook 'after-init-hook 'gcmh-mode)
 
 
 ;; ---------------------------------
