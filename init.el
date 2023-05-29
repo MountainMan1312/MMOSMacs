@@ -314,7 +314,9 @@
 ;; Disable line numbers in specific modes
 (dolist (mode '(org-mode-hook
                 org-agenda-mode-hook
-                helpful-mode-hook))
+                helpful-mode-hook
+                term-mode
+                vterm-mode))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
