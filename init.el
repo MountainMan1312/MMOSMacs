@@ -778,6 +778,15 @@
          ("C-c n r h" . mm/org-roam-refactor-hierarchy)
          ("C-c n r f" . mm/org-roam-refactor-file)))
 
+;; Graph UI for org-roam.
+(use-package org-roam-ui
+  :straight t
+  :config
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start nil))
+
 
 ;; ---------------------------------
 ;; Task / Time Management
