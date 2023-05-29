@@ -5,10 +5,9 @@
 
 
 ;; ---------------------------------------------------------------------
-;;; Package & Configuration Management
-;; -----------------------------------
-;; MMOSMacs uses `straight.el' for package management and `use-package'
-;; for configuration management to make things more consistent.
+;;; Startup
+;; --------
+;; These items need to be done first
 ;; ---------------------------------------------------------------------
 
 ;; --------------------------------
@@ -19,6 +18,15 @@
 
 (setq debug-on-error t)
 
+
+
+
+;; ---------------------------------------------------------------------
+;;; Package & Configuration Management
+;; -----------------------------------
+;; MMOSMacs uses `straight.el' for package management and `use-package'
+;; for configuration management to make things more consistent.
+;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
 ;; Bootstrap `straight.el'
