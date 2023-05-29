@@ -883,7 +883,9 @@
 
 ;; Vterm
 (use-package vterm
-  :straight t)
+  :straight t
+  :config
+  (setq vterm-always-compile-module t))
 
 
 ;; ---------------------------------
