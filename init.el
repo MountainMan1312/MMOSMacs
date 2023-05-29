@@ -365,7 +365,8 @@
                 compilation-mode-hook
                 minibuffer-setup-hook
                 special-mode-hook
-                term-mode-hook))
+                term-mode-hook
+                vterm-mode-hook))
   (add-hook hook (lambda () (setq-local show-trailing-whitespace nil))))
 
 ;; Make files end with newline
