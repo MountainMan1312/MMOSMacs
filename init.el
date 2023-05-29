@@ -11,6 +11,15 @@
 ;; for configuration management to make things more consistent.
 ;; ---------------------------------------------------------------------
 
+;; --------------------------------
+;; Produce backtraces when errors
+;; occur. Can be helpful to
+;; diagnose startup issues.
+;; ---------------------------------
+
+(setq debug-on-error t)
+
+
 ;; ---------------------------------
 ;; Bootstrap `straight.el'
 ;; -----------------------
