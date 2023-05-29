@@ -1099,3 +1099,22 @@
 
 (global-set-key (kbd "M-;") 'comment-line)
 (global-set-key (kbd "C-M-;") 'comment-or-uncomment-region)
+
+
+;; ---------------------------------------------------------------------
+;;; End of MMOSMacs configuration
+;; ------------------------------
+
+;; ---------------------------------
+;; Start Emacs Server
+;; ------------------
+;; This is the last step of MMOSMacs
+;; configuration.
+;; ---------------------------------
+
+(add-hook 'after-init-hook (lambda ()
+                             (require 'server)
+                             (unless (server-running-p)
+                               (server-start))))
+
+;;; init.el ends here
