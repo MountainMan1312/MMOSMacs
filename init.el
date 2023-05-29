@@ -147,12 +147,40 @@
 ;; look at Emacs.
 ;; ---------------------------------
 
+;; Jazz Theme
 (use-package jazz-theme
   :straight t)
-
 (load-theme 'jazz t)
 
+;; Background color
 (set-background-color "black")
+
+;; Cursor
+(setq cursor-type 'box)
+(set-cursor-color "grey13")
+
+;; Highlights
+(set-face-attribute 'highlight nil :background "#333")
+
+;; Selection
+(set-face-attribute 'region nil
+                    :background "#222"
+                    :foreground nil)
+
+;; Comments
+(set-face-attribute 'font-lock-comment-face nil :foreground "#222")
+
+;; Different face for delimiters
+(use-package paren-face
+  :straight t
+  :config
+  (set-face-attribute 'parenthesis nil :foreground "#222"))
+(add-hook 'after-init-hook 'global-paren-face-mode)
+
+;; Highlight color codes as their respective color
+(use-package rainbow-mode
+  :straight t
+  :hook (prog-mode . rainbow-mode))
 
 
 ;; ---------------------------------
