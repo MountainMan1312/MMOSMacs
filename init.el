@@ -315,8 +315,8 @@
 (dolist (mode '(org-mode-hook
                 org-agenda-mode-hook
                 helpful-mode-hook
-                term-mode
-                vterm-mode))
+                term-mode-hook
+                vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 
