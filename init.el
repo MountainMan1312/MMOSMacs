@@ -273,8 +273,8 @@
 
 
 ;; ---------------------------------------------------------------------
-;;; Completion & Correction
-;; ------------------------
+;;; Completion, Correction, & Search
+;; ---------------------------------
 ;; Completion and correction are the main source of my typing efficiency
 ;; if I'm being honest.
 ;; ---------------------------------------------------------------------
@@ -353,6 +353,23 @@
   (setq completion-styles '(orderless)
         completion-category-defaults nil
         completion-category-overrides '((file (styles partial-completion)))))
+
+
+;; ---------------------------------
+;; Search
+;; ------
+;; Find stuff.
+;; ---------------------------------
+
+(use-package isearch
+  :straight (:type built-in)
+  :config
+  (setq isearch-lazy-count t
+        lazy-count-prefix-format nil
+        lazy-count-suffix-format "    (%s/%S)"
+        search-whitespace-regexp ".*"
+        isearch-lax-whitespace t
+        isearch-regexp-lax-whitespace t))
 
 
 
