@@ -461,6 +461,25 @@
   :bind ("M-=" . er/expand-region))
 
 
+;; ---------------------------------
+;; Multiple cursors
+;; ----------------
+;; This allows you to do the same
+;; thing in multiple places.
+;; ---------------------------------
+
+(use-package multiple-cursors
+  :straight t
+  :bind (("s-m" . mc/mark-more-like-this-extended))
+  :config
+  (setq mc/cmds
+        '(electric-pair-delete-pair
+          end-of-visual-line
+          beginning-of-visual-line
+          beginning-of-line-text
+          mm/keyboard-escape-quit-keep-windows)))
+
+
 
 
 ;; ---------------------------------------------------------------------
