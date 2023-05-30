@@ -1153,6 +1153,10 @@
 ;; TAB
 (global-set-key (kbd "<s-tab>") (kbd "<tab>"))
 
+;; Fix "IK" M-arrow movement for org-mode
+(define-key org-mode-map (kbd "s-M-i") (kbd "M-<up>"))
+(define-key org-mode-map (kbd "s-M-k") (kbd "M-<down>"))
+
 
 ;; ---------------------------------
 ;; Insert date/time at POINT
