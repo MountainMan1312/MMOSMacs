@@ -1001,6 +1001,25 @@
 ;; minibuffer or a popup window.
 ;; ---------------------------------
 
+;; Define function and keybind to list all bindings of a certain key
+(defun mm/print-all-bindings-for-key (key)
+  "Output all bindings for KEY in *MESSAGES*."
+  (interactive "kEnter key sequence:  ")
+  (mapc (lambda (pair)
+          (when (cdr pair)
+            (message "%S: %S" (car pair) (cdr pair))))
+        (mapcar (lambda (keymap)
+                  (cons keymap
+                        (let ((binding (lookup-key (eval keymap) key)))
+                          (and (not (numberp binding)) binding))))
+                (let (atoms)
+                  (mapatoms (lambda (a)
+                              (when (keymapp (and (boundp a) (eval a)))
+                                (push a atoms))))
+                  atoms))))
+(global-set-key (kbd "C-h C-u k") 'mm/print-all-bindings-for-key)
+
+
 ;; Define fixed version of `keyboard-escape-quit' which does not close
 ;; windows or change their layout.
 (defun mm/keyboard-escape-quit-keep-windows ()
