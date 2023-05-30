@@ -1070,11 +1070,69 @@
 ;; text (i.e. follow indentation)
 ;; ---------------------------------
 
-;; Make home key respect indentation
-(global-set-key (kbd "<home>") 'beginning-of-line-text)
 
-;; Use Shift + HOME for old behavior
+;; ---------------------------------
+;; Movement
+;; --------
+;; MMOSMacs uses IJKL movement.
+;; Movement all requires use of the
+;; Super key.
+;;
+;; U and O are used as equivalents
+;; of Home/PgUp and End/PgDown
+;; respectively.
+;; ---------------------------------
+
+;; Move by character
+(global-set-key (kbd "s-i") (kbd "<up>"))
+(global-set-key (kbd "s-I") (kbd "<S-up>"))
+(global-set-key (kbd "s-k") (kbd "<down>"))
+(global-set-key (kbd "s-K") (kbd "<S-down>"))
+(global-set-key (kbd "s-j") (kbd "<left>"))
+(global-set-key (kbd "s-J") (kbd "<S-left>"))
+(global-set-key (kbd "s-l") (kbd "<right>"))
+(global-set-key (kbd "s-L") (kbd "<S-right>"))
+
+;; Move left/right by word
+(global-set-key (kbd "s-C-j") (kbd "<C-left>"))
+(global-set-key (kbd "s-C-S-j") (kbd "<C-S-left>"))
+(global-set-key (kbd "s-C-l") (kbd "<C-right>"))
+(global-set-key (kbd "s-C-S-l") (kbd "<C-S-right>"))
+
+;; Move up/down by paragraph
+(global-set-key (kbd "s-C-i") (kbd "<C-up>"))
+(global-set-key (kbd "s-C-S-i") (kbd "<C-S-up>"))
+(global-set-key (kbd "s-C-k") (kbd "<C-down>"))
+(global-set-key (kbd "s-C-S-k") (kbd "<C-S-down>"))
+
+;; Home
+(global-set-key (kbd "<home>") 'beginning-of-line-text)
+(global-set-key (kbd "s-u") (kbd "<home>"))
+(global-set-key (kbd "s-U") (kbd "S-<home>"))
 (global-set-key (kbd "C-<home>") 'beginning-of-visual-line)
+(global-set-key (kbd "s-C-u") (kbd "C-<home>"))
+(global-set-key (kbd "s-C-S-u") (kbd "C-S-<home>"))
+
+;; End
+(global-set-key (kbd "s-o") (kbd "<end>"))
+(global-set-key (kbd "s-O") (kbd "S-<end>"))
+(global-set-key (kbd "C-<end>") (kbd "<end>"))
+(global-set-key (kbd "C-S-<end>") (kbd "S-<end>"))
+(global-set-key (kbd "s-C-o") (kbd "C-<end>"))
+(global-set-key (kbd "s-C-S-o") (kbd "C-S-<end>"))
+
+;; PgUp / PgDown
+(global-set-key (kbd "s-M-u") (kbd "<prior>"))
+(global-set-key (kbd "s-M-U") (kbd "<S-prior>"))
+(global-set-key (kbd "s-M-o") (kbd "<next>"))
+(global-set-key (kbd "s-M-O") (kbd "<S-next>"))
+
+;; ;; Backspace / Delete
+(global-set-key (kbd "s-SPC") (kbd "<backspace>"))
+(global-set-key (kbd "C-SPC") (kbd "<delete>"))
+
+;; TAB
+(global-set-key (kbd "<s-tab>") (kbd "<tab>"))
 
 
 ;; ---------------------------------
