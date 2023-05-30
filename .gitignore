@@ -3,10 +3,10 @@ bookmarks
 .cache/
 eln-cache/
 eshell/
+.org-id-locations
 org-roam.db
 projectile.cache
 projectile-bookmarks.eld
 projectile-known-projects.eld
 straight/
 transient/
-.org-id-locations
