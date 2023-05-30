@@ -73,6 +73,21 @@
 (setq load-prefer-newer t)
 
 
+;; ---------------------------------
+;; Exclude modes from modeline list
+;; --------------------------------
+;; The modeline can get rather
+;; clogged with all these modes
+;; running around. Delight allows
+;; you to hide them
+;; ---------------------------------
+
+(use-package delight
+  :straight t
+  :delight
+  (buffer-face-mode))
+
+
 
 
 ;; ---------------------------------------------------------------------
@@ -90,6 +105,7 @@
 (use-package gcmh
   :straight t
   :defer t
+  :delight
   :init
   (setq gcmh-idle-delay 15
         gcmh-idle-delay-factor 10
@@ -197,6 +213,7 @@
 ;; Highlight color codes as their respective color
 (use-package rainbow-mode
   :straight t
+  :delight
   :hook (prog-mode . rainbow-mode))
 
 
@@ -426,8 +443,10 @@
 (setq-default indent-tabs-mode nil
 	            tab-width 2)
 
-;; Wrap words at buffer edge
+;; Wrap words at buffer edge (and hide modeline entry for WRAP)
 (global-visual-line-mode)
+(use-package emacs
+  :delight (visual-line-mode))
 
 
 ;; ---------------------------------
@@ -827,6 +846,8 @@
 
 ;; Agenda configuration
 (use-package org
+  :delight
+  (org-indent-mode)
   :config
   (setq org-agenda-start-with-log-mode t
         org-agenda-files '("~/kb/agenda.org")
@@ -914,11 +935,18 @@
 ;; a mistake.
 ;; ---------------------------------
 
+;; Eldoc shows function definition hints in the echo area
+(use-package eldoc
+  :straight (:type built-in)
+  :delight
+  :config)
+
 ;; Flycheck is activated by specific language modes.
 ;; See `:hook's in language modes below to see which ones use it.
 (use-package flycheck
   :straight t
-  :defer t)
+  :defer t
+  :delight 'flycheck-mode)
 
 
 ;; ---------------------------------
@@ -1000,6 +1028,7 @@
 
 (use-package which-key
   :straight t
+  :delight
   :init (which-key-mode)
   :config
   (setq which-key-idle-delay 1.5
