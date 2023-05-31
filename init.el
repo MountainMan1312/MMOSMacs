@@ -1271,7 +1271,7 @@
 ;; each line separately.
 ;; ---------------------------------
 
-(global-set-key (kbd "M-;") 'comment-line)
+(global-set-key (kbd "C-;") 'comment-line)
 (global-set-key (kbd "C-M-;") 'comment-or-uncomment-region)
 
 
