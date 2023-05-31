@@ -571,6 +571,30 @@
 
 
 ;; ---------------------------------
+;; Delete files
+;; ------------
+;; Make deleting files a lot more
+;; convenient.
+;; ---------------------------------
+
+;; It's possible to delete a file
+;; and forget about it, then save
+;; buffer again. This function kills
+;; the buffer after deleting the
+;; file.
+(defun mm/delete-visited-file (buffer-name)
+  "Delete the file visited by BUFFER-NAME."
+  (interactive "bDelete file visited by buffer ")
+  (let* ((buffer (get-buffer buffer-name))
+         (filename (buffer-file-name buffer)))
+    (when buffer
+      (when (and filename
+                 (file-exists-p filename))
+        (delete-file filename))
+      (kill-buffer buffer))))
+
+
+;; ---------------------------------
 ;; Project management
 ;; ------------------
 ;; `Projectile' provides features
