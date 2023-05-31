@@ -1257,6 +1257,8 @@
   :bind (("C-h f" . helpful-callable)
          ("C-h k" . helpful-key)
          ("C-h p" . helpful-at-point)
+         ("C-h q" . helpful-kill-buffers)
+         ("C-h s" . helpful-symbol)
          ("C-h v" . helpful-variable)
          ("C-h x" . helpful-command)))
 
