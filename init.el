@@ -1210,12 +1210,6 @@
 (global-set-key (kbd "s-C-o") (kbd "C-<end>"))
 (global-set-key (kbd "s-C-S-o") (kbd "C-S-<end>"))
 
-;; PgUp / PgDown
-(global-set-key (kbd "s-M-u") (kbd "<prior>"))
-(global-set-key (kbd "s-M-U") (kbd "<S-prior>"))
-(global-set-key (kbd "s-M-o") (kbd "<next>"))
-(global-set-key (kbd "s-M-O") (kbd "<S-next>"))
-
 ;; ;; Backspace / Delete
 (global-set-key (kbd "s-SPC") (kbd "<backspace>"))
 (global-set-key (kbd "C-SPC") (kbd "<delete>"))
