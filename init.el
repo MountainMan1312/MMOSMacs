@@ -1061,12 +1061,13 @@
 ;; ---------------------------------------------------------------------
 
 ;; ---------------------------------
-;; Keybind hints
-;; -------------
-;; Show hints for available keybinds
-;; as you type them.
+;; Keybind assistance
+;; ------------------
+;; There's no need to remember every
+;; keybinds by heart. Just tell me.
 ;; ---------------------------------
 
+;; Show keybind hints as they are typed
 (use-package which-key
   :straight t
   :delight
@@ -1074,21 +1075,6 @@
   :config
   (setq which-key-idle-delay 1.5
         which-key-side-window-max-height 5))
-
-
-;; ---------------------------------
-;; Fix ESC behavior
-;; ----------------
-;; The default behavior of the ESC
-;; key is atrocious. Why in God's
-;; name would I want it to close all
-;; my windows when I press it twice?
-;;
-;; This fixes the behavior to do
-;; what ESC should do: "escape" the
-;; current thing I'm doing, like the
-;; minibuffer or a popup window.
-;; ---------------------------------
 
 ;; Define function and keybind to list all bindings of a certain key
 (defun mm/print-all-bindings-for-key (key)
@@ -1108,6 +1094,20 @@
                   atoms))))
 (global-set-key (kbd "C-h C-u k") 'mm/print-all-bindings-for-key)
 
+
+;; ---------------------------------
+;; Fix ESC behavior
+;; ----------------
+;; The default behavior of the ESC
+;; key is atrocious. Why in God's
+;; name would I want it to close all
+;; my windows when I press it twice?
+;;
+;; This fixes the behavior to do
+;; what ESC should do: "escape" the
+;; current thing I'm doing, like the
+;; minibuffer or a popup window.
+;; ---------------------------------
 
 ;; Define fixed version of `keyboard-escape-quit' which does not close
 ;; windows or change their layout.
