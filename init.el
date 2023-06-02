@@ -1163,13 +1163,14 @@
 ;; ---------------------------------
 ;; Movement
 ;; --------
-;; MMOSMacs uses IJKL movement.
-;; Movement all requires use of the
-;; Super key.
+;; MMOSMacs uses s-IJKLUO keybinds
+;; for movement.
 ;;
-;; U and O are used as equivalents
-;; of Home/PgUp and End/PgDown
-;; respectively.
+;; Super + IJKL is equivalent to the
+;; arrow keys.
+;;
+;; Super + U & O are equivalent to
+;; Home & End.
 ;; ---------------------------------
 
 ;; Move by character
