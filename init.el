@@ -1224,6 +1224,20 @@
 
 
 ;; ---------------------------------
+;; Buffer / Window Management
+;; --------------------------
+;; Make managing buffers and windows
+;; more efficient.
+;; ---------------------------------
+
+;; Switch buffers
+(global-set-key (kbd "s-b") 'switch-to-buffer)
+
+;; Switch windows
+(global-set-key (kbd "s-w") 'other-window)
+
+
+;; ---------------------------------
 ;; Insert date/time at POINT
 ;; -------------------------
 ;; [YYYY-MM-DD HH:mm]
