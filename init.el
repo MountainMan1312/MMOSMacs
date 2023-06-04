@@ -1213,10 +1213,15 @@
 
 ;; ;; Backspace / Delete
 (global-set-key (kbd "s-SPC") (kbd "<backspace>"))
-(global-set-key (kbd "C-SPC") (kbd "<delete>"))
+(global-set-key (kbd "s-C-SPC") (kbd "C-<backspace>"))
+(global-set-key (kbd "M-SPC") (kbd "<delete>"))
+(global-set-key (kbd "C-M-SPC") (kbd "C-<delete>"))
 
 ;; TAB
 (global-set-key (kbd "<s-tab>") (kbd "<tab>"))
+
+;; RET
+(global-set-key (kbd "s-<return>") (kbd "<return>"))
 
 ;; Fix "IK" M-arrow movement for org-mode
 (define-key org-mode-map (kbd "s-M-i") (kbd "M-<up>"))
