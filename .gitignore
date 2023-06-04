@@ -3,6 +3,7 @@ bookmarks
 .cache/
 eln-cache/
 eshell/
+games/
 .org-id-locations
 org-roam.db
 projectile.cache
