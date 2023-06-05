@@ -189,15 +189,16 @@
 (set-background-color "black")
 
 ;; Cursor
-(setq cursor-type 'box)
-(set-cursor-color "grey13")
+(setq cursor-type 'box
+      blink-cursor-blinks 0)
+(add-to-list 'default-frame-alist '(cursor-color . "orange"))
 
 ;; Highlights
 (set-face-attribute 'highlight nil :background "#333")
 
 ;; Selection
 (set-face-attribute 'region nil
-                    :background "#222"
+                    :background "#110"
                     :foreground nil)
 
 ;; Comments
