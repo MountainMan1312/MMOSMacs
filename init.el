@@ -167,7 +167,30 @@
   :straight t
   :config
   (require 'exwm-config)
-  (setq exwm-workspace-number 1)
+  (setq exwm-workspace-number 1
+        exwm-input-prefix-keys '(?\C-h
+                                 ?\C-u
+                                 ?\C-x
+                                 ?\M-x
+                                 ?\M-`
+                                 ?\M-:
+                                 ?\M-&)
+        exwm-input-global-keys '(;; Reset EXWM to line-mode to regain control
+                                 ([?\s-r] . exwm-reset)
+                                 ;; Move between windows with Super + ESDF
+                                 ([?\s-e] . windmove-up)
+                                 ([?\s-d] . windmove-down)
+                                 ([?\s-s] . windmove-left)
+                                 ([?\s-f] . windmove-right)
+                                 ;; Launch applications via shell command
+                                 ([?\s-x] . (lambda (command)
+                                              (interactive (list (read-shell-command "$ ")))
+                                              (start-process-shell-command
+                                               command nil command)))
+                                 ;; Switch workspace
+                                 ([?\s-w] . exwm-workspace-switch)
+                                 ([?\s-`] . (lambda () (interactive)
+                                              (exwm-workspace-switch-create 0)))))
   (exwm-enable))
 
 
