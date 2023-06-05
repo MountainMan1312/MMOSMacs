@@ -75,12 +75,14 @@ If you need to access the Syncthing GUI from a different computer, you can allow
 ```xml
 <gui enabled="true" tls="false" debugging="false">
         <address>127.0.0.1:40469</address>
-        <apikey>KoafJAnTpYxPSuywYmk9fNP2gpuVLFfb</apikey>
-        <theme>black</theme>
 ```
 
-Change the `<address>127.0.0.1:40469</address>` part to `<address>0.0.0.0:40469</address>` to allow connections from other computers. Be sure to disable this once you've got Syncthing setup for security.
+Change it to the following, but be sure to disable it later for security:
 
+```xml
+<gui enabled="true" tls="false" debugging="false">
+        <address>0.0.0.0:40469</address>
+```
 
 
 
