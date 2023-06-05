@@ -1236,11 +1236,8 @@
 ;; more efficient.
 ;; ---------------------------------
 
-;; Switch buffers
+;; Switch buffer
 (global-set-key (kbd "s-b") 'switch-to-buffer)
-
-;; Switch windows
-(global-set-key (kbd "s-w") 'other-window)
 
 
 ;; ---------------------------------
