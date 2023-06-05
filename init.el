@@ -532,7 +532,7 @@
   :straight t
   :bind (("s-m" . mc/mark-more-like-this-extended))
   :config
-  (setq mc/cmds
+  (setq mc/cmds-to-run-for-all
         '(electric-pair-delete-pair
           end-of-visual-line
           beginning-of-visual-line
