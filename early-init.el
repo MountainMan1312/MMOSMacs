@@ -1,17 +1,17 @@
-;;; -*- lexical-binding: t; -*-
-;;; early-init.el
+;;; early-init.el --- Early init file for MMOSMacs -*- lexical-binding: t; -*-
 ;;
+;;; Commentary:
 ;; Early Init file for MMOSMacs. This is loaded before the GUI and
 ;; package system are initialized. This should contain only what
 ;; absolutely must be in Early Init.
 
+;;; Code:
 
 ;; ---------------------------------------------------------------------
 ;;; Performance hacks
 ;; ------------------
 ;; These hacks subjectively make Emacs perform "better"
 ;; ---------------------------------------------------------------------
-
 
 ;; ---------------------------------
 ;; GCMH
@@ -61,7 +61,8 @@
 ;; Maximize frame on startup
 ;; -------------------------
 ;; Resizing is one of the primary
-;; sources of visual glitching.
+;; sources of visual glitching, and
+;; an expensive part of startup.
 ;; ---------------------------------
 
 (push '(fullscreen . maximized) initial-frame-alist)
@@ -99,3 +100,5 @@
 ;; `straight.el'
 ;; ---------------------------------
 (setq package-enable-at-startup nil)
+
+;;; early-init.el ends here
