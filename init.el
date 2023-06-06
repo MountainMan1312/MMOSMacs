@@ -527,6 +527,11 @@
   (setq expand-region-subword-enabled t)
   :bind ("M-=" . er/expand-region))
 
+;; Enable `cua-selection-mode' for
+;; rectangular selection.
+(add-hook 'after-init-hook 'cua-selection-mode)
+(global-set-key (kbd "s-c") 'rectangle-mark-mode)
+
 
 ;; ---------------------------------
 ;; Multiple cursors
