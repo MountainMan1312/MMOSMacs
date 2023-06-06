@@ -4,6 +4,41 @@ MMOSMacs is my personal Emacs configuration, but it's also the precursor to a pr
 
 MMOSMacs is the core of my computing experience, and is meant to be a jack of all trades, just like me. As such, this is a "kitchen sink" configuration. I make no attempt to separate my personal preferences from the main functionality.
 
+## Features
+
+### Current Features
+
+- Illiterate configuration (like literate but with comments instead of `org-mode`)
+- Modern configuration using `straight.el` and `use-package`
+- Emacs as a desktop environment (EXWM)
+- The beginnings of an opinionated ergonomic keybind setup (still a long ways off though)
+- The beginnings of a development environemnt (also a long ways off)
+- Opinionated PKMS system
+
+### Plans
+
+- Custom theme, modeline, & anti-distraction features
+- Custom ergonomic keybind system
+- Full-featured desktop environment (EDNC, EMMS, etc.)
+- Full-featured development environment
+  - POSIX Shell, bash
+  - Emacs Lisp, Common Lisp
+  - Assembly, C, Haskell
+  - SQL, AQL, DQL, GraphQL, Cypher
+  - CSV, JSON, XML, YAML
+  - Markdown, HTML, JS, CSS
+- Communications platform
+  - Email, mailing lists
+  - Web Feeds (RSS)
+  - IRC, Matrix
+  - SDR
+- Productivity Suite
+  - Finance
+  - Editing & Publishing
+  - Programmatic CAD
+- System & Network Administration tools
+- Security & cryptography tools
+- Games
 
 ## Installation
 
@@ -92,28 +127,6 @@ Then, run the first-time-setup commands for the following packages:
 
 - `M-x all-the-icons-install-fonts RET y`
 - `M-x lsp-install-server RET bash-ls RET`
-
-
-## Plans
-
-- Non-literate configuration
-- `straight.el` + `use-package` package management
-- Emacs as a desktop environment (`EXWM`, `EDNC`)
-- System & network administration suite
-- Security & crytography
-- Software development environment
-- Communications (Email, RSS, IRC, Matrix, etc.)
-- Opinionated PKMS and publishing suite
-- Common desktop applications
-    - Web browser, FTP, Torrent
-    - Multimedia production
-    - OpenSCAD / ImplicitCAD
-    - Finance
-    - Games
-- Custom modeline & anti-distraction features
-- Custom theme deisnged to reduce eye-strain
-- Custom keybind system, menus, & dialogs
-
 
 ## Contributing
 
