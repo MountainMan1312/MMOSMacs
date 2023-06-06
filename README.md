@@ -135,8 +135,8 @@ to other people, but ultimately it is crafted to suit my own needs.
 
 If you want to contribute to MMOSMacs, please read `CONTRIBUTING.md`. If
 you do not have a copy of this file, it can be found at either:
-- https://github.com/MountainMan1312/MMOSMacs/blob/stable/README.md
-- https://raw.githubusercontent.com/MountainMan1312/MMOSMacs/stable/README.md
+- https://github.com/MountainMan1312/MMOSMacs/blob/stable/CONTRIBUTING.md
+- https://raw.githubusercontent.com/MountainMan1312/MMOSMacs/stable/CONTRIBUTING.md
 
 Feel free to fork this repository. There is no need to give me credit.
 It is wrong to claim ownership of knowledge.
