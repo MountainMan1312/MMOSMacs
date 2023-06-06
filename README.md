@@ -84,6 +84,14 @@ Change it to the following, but be sure to disable it later for security:
         <address>0.0.0.0:40469</address>
 ```
 
+### Run MMOSMacs for the first time
+
+`cd` into your home directory and run `startx` to launch MMOSMacs for the first time. There might be some weird stuff that happens and some warnings, so `M-x kill-emacs` and `startx` again.
+
+Then, run the first-time-setup commands for the following packages:
+
+- `M-x all-the-icons-install-fonts RET y`
+- `M-x lsp-install-server RET bash-ls RET`
 
 
 ## Plans
