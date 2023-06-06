@@ -13,40 +13,27 @@ Much of this Style Guide was taken from
 
 ## Organization
 
-Emacs Lisp files should begin with a header. The first line of the
-header should include the filename, a very brief comment (2-5 words),
-and the `-*- lexical-binding: t; -*-` thing. The next line(s) should be
-a more detailed description of the file and it's purpose.
+Emacs Lisp files should begin with a header. The first line of the header should include the filename, a very brief comment (2-5 words), and the `-*- lexical-binding: t; -*-` thing. The next line should be `;;`, and the next should be `;;; Commentary:`, below which should be a more detailed description of the file and it's purpose, as well as any important notes or warnings.
 
 ```elisp
-;;; -*- lexical-binding: t; -*-
-;;; init.el
+;;; init.el --- Init file for MMOSMacs -*- lexical-binding: t; -*-
 ;;
-;; Main config file for MMOSMacs; the glue that binds the modules
-;; together. Provides package management, performance tweaks, and
-;; integrates all the other MMOSMacs modules.
+;;; Commentary:
+;; Main config file for MMOSMacs.
 ```
 
-All Emacs Lisp files are organized into Sections and Subsections using
-comment decorations. Section titles begin with `;;;`, are ALL CAPS, and
-their decorations extend up to 72 chars. Subsections begin with `;;`
-and their decorations extend up to 36 chars. Titles should be underlined
-with dashes on the proceeding line. Explanatory comments go below the
-title underline, and an additional 36-or-72-char line goes at the bottom
-of the header.
+All Emacs Lisp files are organized into Sections and Subsections using comment decorations. Section titles begin with `;;;` and their decorations extend up to 72 chars. Subsections begin with `;;` and their decorations extend up to 36 chars. Titles should be underlined with dashes on the proceeding line. Explanatory comments go below the
+title underline, and an additional 36-or-72-char line goes at the bottom of the header.
 
-Each subsection should have 2 blank lines between the top line of the
-header and the bottom line of code from the previous subsection. Only
-one line goes between the Section header and the first Subsection, as
-well as between portions of code within the same subsection. 4 lines go
-between a new Section header and the previous bit of code.
+Each subsection should have 2 blank lines between the top line of the header and the bottom line of code from the previous subsection. Only one line goes between the Section header and the first Subsection, as well as between portions of code within the same subsection. 4 lines go between a new Section header and the previous bit of code.
 
 ```elisp
-;; integrates all the other MMOSMacs modules.
+;;; Commentary:
+;; Main configuration file for MMOSMacs.
 
 
 ;; ---------------------------------------------------------------------
-;;; FIRST SECTION TITLE
+;;; First Section Title
 ;; --------------------
 ;; Comments about the purpose of the section go here.
 ;; It should be concise. Don't go into too much detail.
@@ -72,7 +59,8 @@ between a new Section header and the previous bit of code.
   (setq some-crap nil))
 
 ;; `something-else` is a little less
-;; likely to be a package
+;; likely to be a package, but it
+;; wouldn't surprise me
 (use-package something-else
   :straight t)
 
@@ -87,7 +75,7 @@ between a new Section header and the previous bit of code.
 ;; I really don't know what to write
 ;; in these example comments.
 (use-package some-other-thing
-  :straight
+  :straight t
   :init
   (other-thing-mode))
 
@@ -107,8 +95,8 @@ between a new Section header and the previous bit of code.
 
 - Write heading comments with 3 semicolons, and regular comments with 2.
 - Write margin comments with 1 semicolon.
-- Leave 1 space between the semicolons and the comment text.
-- Comments longer than 1 word are capitalized and use punctuation.
+- Put a space between the semicolon and the text for heading and regular comments.
+- Do not put a space between the semicolon and the text for margin comments.
 
 ```elisp
 ;;; This is a heading comment
@@ -116,7 +104,7 @@ between a new Section header and the previous bit of code.
 ;; Something something something.
 (defun foo (bar)
   (something something
-             something-else))    ; for some other reason
+             something-else)) ;this is a margin comment
 ```
 
 
