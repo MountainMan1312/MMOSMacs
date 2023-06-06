@@ -1,21 +1,24 @@
-;;; -*- lexical-binding: t; -*-
-;;; init.el
+;;; init.el --- Init file for MMOSMacs -*- lexical-binding: t; -*-
 ;;
+;;; Commentary:
 ;; Main configuration file for MMOSMacs.
 
+;;; Code:
 
 ;; ---------------------------------------------------------------------
 ;;; Startup
 ;; --------
-;; These items need to be done first
+;; These items need to be done first.
 ;; ---------------------------------------------------------------------
 
 ;; --------------------------------
-;; Produce backtraces when errors
-;; occur. Can be helpful to
-;; diagnose startup issues.
+;; Debug on error
+;; --------------
+;; Can be helpful to diagnose
+;; startup issues.
 ;; ---------------------------------
 
+;; Produce backtraces when errors occur
 (setq debug-on-error t)
 
 
@@ -53,7 +56,7 @@
 ;; ---------------------------------
 ;; `use-package'
 ;; -------------
-;; This makes sure `use-package' is
+;; Makes sure `use-package' is
 ;; installed and loaded.
 ;; ---------------------------------
 
@@ -63,10 +66,10 @@
 ;; ---------------------------------
 ;; Don't load outdated code
 ;; ------------------------
-;; MMOSMacs is under highly active
+;; MMOSMacs is under active
 ;; development and undergoes
 ;; freuqent changes. The newest code
-;; should always be loaded
+;; should always be loaded.
 ;; ---------------------------------
 
 ;; if a `.el' file is newer than its corresponding `.elc', load the `.el'
@@ -102,6 +105,7 @@
 ;; Garbage Collector Magic Hack
 ;; ---------------------------------
 
+;; Configure GCMH
 (use-package gcmh
   :straight t
   :defer t
@@ -109,7 +113,9 @@
   :init
   (setq gcmh-idle-delay 15
         gcmh-idle-delay-factor 10
-        gcmh-high-cons-threshold (* 16 1024)))             ;16kb
+        gcmh-high-cons-threshold (* 16 1024))) ;16kb
+
+;; Start GCMH after init is complete
 (add-hook 'after-init-hook 'gcmh-mode)
 
 
@@ -119,11 +125,12 @@
 ;; Asynchronous processing of things
 ;; ---------------------------------
 
-;; Async package
+;; Configure Async package
 (use-package async
   :straight t
   :config
-  (setq async-bytecomp-package-mode t))
+  (setq async-bytecomp-package-mode t      ;Enable byte-compiled Emacs Lisp
+        warning-suppress-types '((comp)))) ;Don't steal focus while doing Async compilation
 
 
 
@@ -182,15 +189,13 @@
                                  ([?\s-d] . windmove-down)
                                  ([?\s-s] . windmove-left)
                                  ([?\s-f] . windmove-right)
-                                 ;; Launch applications via shell command
+                                 ;; Launch applications via shell command with `s-x'
                                  ([?\s-x] . (lambda (command)
                                               (interactive (list (read-shell-command "$ ")))
                                               (start-process-shell-command
                                                command nil command)))
-                                 ;; Switch workspace
-                                 ([?\s-w] . exwm-workspace-switch)
-                                 ([?\s-`] . (lambda () (interactive)
-                                              (exwm-workspace-switch-create 0)))))
+                                 ;; Switch workspace with `s-w'
+                                 ([?\s-w] . exwm-workspace-switch)))
   (exwm-enable))
 
 
@@ -203,7 +208,9 @@
 ;; look at Emacs.
 ;; ---------------------------------
 
-;; Jazz Theme
+;; Jazz Theme is the nicest-looking
+;; theme I've found so far. Really
+;; easy on the eyes.
 (use-package jazz-theme
   :straight t)
 (load-theme 'jazz t)
@@ -244,7 +251,8 @@
 ;; ---------------------------------
 ;; Fonts
 ;; -----
-;; For now I use Iosevka and Exo
+;; For now I use JetBrains Mono and
+;; Noto Sans.
 ;; ---------------------------------
 
 (set-face-attribute 'default nil :font "JetBrains Mono" :height 100)
@@ -389,10 +397,10 @@
   :straight (:type built-in)
   :config
   (setq isearch-lazy-count t
-        lazy-count-prefix-format nil
-        lazy-count-suffix-format "    (%s/%S)"
+        lazy-count-prefix-format nil           ;don't show match count before search
+        lazy-count-suffix-format "    (%s/%S)" ;show match count at end of search
         search-whitespace-regexp ".*"
-        isearch-lax-whitespace t
+        isearch-lax-whitespace t               ;match any number of spaces
         isearch-regexp-lax-whitespace t))
 
 
@@ -512,7 +520,6 @@
 ;; the selected text
 (delete-selection-mode t)
 
-
 ;; Expand region by semantic units
 (use-package expand-region
   :straight t
@@ -532,7 +539,7 @@
   :straight t
   :bind (("s-m" . mc/mark-more-like-this-extended))
   :config
-  (setq mc/cmds
+  (setq mc/cmds-to-run-for-all
         '(electric-pair-delete-pair
           end-of-visual-line
           beginning-of-visual-line
@@ -665,7 +672,7 @@
 (use-package diff-hl
   :straight t
   :config
-  (set-fringe-mode '(10 . 0))
+  (set-fringe-mode '(10 . 0)) ;fringe width
   :hook
   (prog-mode    . diff-hl-mode)
   (diff-hl-mode . diff-hl-flydiff-mode))
@@ -698,14 +705,17 @@
   (visual-line-mode)
   (variable-pitch-mode))
 
-
 ;; Org font stuff
 (defun mm/org-font-setup ()
   ;; Replace hyphens in lists with dots
   (font-lock-add-keywords 'org-mode
                           '(("^ *\\([-]\\) "
-                             (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
-  ;; Set font sizes
+                             (0 (prog1 ()
+                                  (compose-region
+                                   (match-beginning 1)
+                                   (match-end 1)
+                                   "•"))))))
+  ;; Set font sizes for org headings
   (dolist (face '((org-level-1 . 1.1)
                   (org-level-2 . 1.1)
                   (org-level-3 . 1.1)
@@ -737,7 +747,6 @@
   (set-face-attribute 'org-agenda-current-time nil :inherit 'fixed-pitch)
   (set-face-attribute 'org-agenda-calendar-event nil :inherit 'fixed-pitch)))
 
-
 ;; `org' configuration
 (use-package org
   :straight t
@@ -755,7 +764,6 @@
   ("C-c n l t" . org-toggle-link-display)
   ("C-c t"     . org-agenda-todo))
 
-
 ;; Make org heading bullets look nicer
 (use-package org-bullets
   :straight t
@@ -763,8 +771,7 @@
   :custom
   (org-bullets-bullet-list '("•")))
 
-
-;; Auto-show emphasis markers on hover
+;; Auto-show emphasis markers and links on hover
 (use-package org-appear
   :straight t
   :hook (org-mode . org-appear-mode)
@@ -773,8 +780,7 @@
         org-appear-autolinks t
         org-appear-autosubmarkers t))
 
-
-;; Show link hints to make following links easier
+;; Define keybinds to follow org links
 (use-package link-hint
   :straight t
   :bind
@@ -790,13 +796,13 @@
 
 ;; Define function to insert a link to a node without opening it
 (defun mm/org-roam-node-insert-immediate (arg &rest args)
-  "This version of `org-roam-node-insert' inserts a node without opening it."
+  "Insert `org-roam' node without opening it."
   (interactive "P")
   (let ((args (cons arg args))
-        (org-roam-capture-templates (list (append (car org-roam-capture-templates)
-                                                  '(:immediate-finish)))))
+        (org-roam-capture-templates
+         (list (append (car org-roam-capture-templates)
+                       '(:immediate-finish)))))
     (apply #'org-roam-node-insert args)))
-
 
 ;; Add Dendron-like note refactoring functionality
 ;; This was taken from https://github.com/vicrdguez/dendroam
@@ -804,10 +810,10 @@
   (file-name-base (org-roam-node-file node)))
 
 (cl-defmethod mm/org-roam-node-hierarchy-title (node)
-  (capitalize (car (last (split-string (org-roam-node-title node)
-                                       "\\.")))))
+  (capitalize (car (last (split-string (org-roam-node-title node) "\\.")))))
 
 (defun mm/org-roam-refactor-file ()
+  "Refactor current `org-roam' node/file."
   (interactive)
   (let* ((initial-file (buffer-file-name))
          (initial-slug (file-name-base initial-file))
@@ -826,13 +832,14 @@
   (file-name-base (buffer-file-name)))
 
 (defun mm/org-roam-get-same-hierarchy-files (hierarchy)
-  "Gets all the nodes that share the same HIERARCHY totally or partially"
+  "Get all the nodes that share the same HIERARCHY totally or partially."
   (let ((files (mapcar #'car (org-roam-db-query [:select [file]
                                                          :from nodes
                                                          :where (like file $r1)]
                                                 (concat "%" hierarchy "%"))))) files))
 
 (defun mm/org-roam-refactor-hierarchy (&optional current)
+  "Refactor all `org-roam' nodes/files under CURRENT hierarchy."
   (interactive)
   (let*
       ((initial-file (file-name-nondirectory (buffer-file-name)))
@@ -857,9 +864,12 @@
 (use-package org-roam
   :straight t
   :custom
+  ;; Keep all notes in `~/kb', which should be synced between all computers
   (org-roam-directory (file-truename "~/kb"))
   (make-directory org-roam-directory 'parents)
+  ;; Do not sync `org-roam.db', it is ephemeral.
   (org-roam-db-location (concat user-emacs-directory "/org-roam.db"))
+  ;; Customize results display when running `org-roam-node-find'
   (org-roam-node-display-template (concat
                                    (propertize "${title:48}    " 'face 'org-document-title)
                                    (propertize "${file:*}" 'face 'org-roam-dim)))
@@ -889,7 +899,7 @@
          ("C-c n r h" . mm/org-roam-refactor-hierarchy)
          ("C-c n r f" . mm/org-roam-refactor-file)))
 
-;; Graph UI for org-roam.
+;; Web-served graph UI for org-roam.
 (use-package org-roam-ui
   :straight t
   :config
@@ -916,13 +926,14 @@
   :config
   (setq org-agenda-start-with-log-mode t
         org-agenda-files '("~/kb/agenda.org")
-        org-todo-keywords'((sequence "TODO(t)" "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)"
-                                     "REVIEW(re)" "|" "DONE(d)" "CANCELED(ca)")
-                           (sequence "EVENT(e)" "|" "MISSED_EVENT(me)" "ATTENDED_EVENT(ae)")
-                           (sequence "APPT(ap)" "|" "MISSED_APPT(ma)" "ATTENDED_APPT(aa)")
-                           (sequence "CLASS(cl)" "|" "ATTENDED_CLASS(ac)"
-                                     "MISSED_CLASS(mc)" "CANCELED_CLASS(cc)")
-                           (sequence "REMINDER(rm)"))
+        org-todo-keywords
+        '((sequence "TODO(t)" "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)"
+                    "REVIEW(re)" "|" "DONE(d)" "CANCELED(ca)")
+          (sequence "EVENT(e)" "|" "MISSED_EVENT(me)" "ATTENDED_EVENT(ae)")
+          (sequence "APPT(ap)" "|" "MISSED_APPT(ma)" "ATTENDED_APPT(aa)")
+          (sequence "CLASS(cl)" "|" "ATTENDED_CLASS(ac)"
+                    "MISSED_CLASS(mc)" "CANCELED_CLASS(cc)")
+          (sequence "REMINDER(rm)"))
         org-agenda-span 7
         org-agenda-start-day "0d"
         org-agenda-start-on-weekday nil
@@ -957,7 +968,7 @@
 ;; This was taken from https://emacs.stackexchange.com/a/68767/38877
 (defvar mm/refresh-agenda-time-seconds 15)
 (defvar mm/refresh-agenda-timer nil
-  "Timer for `mm/refresh-agenda-timer-function' to reschedule itself, or NIL")
+  "Timer for `mm/refresh-agenda-timer-function' to reschedule itself, or NIL.")
 (defun mm/refresh-agenda-timer-function ()
   "If the user types a command while `mm/refresh-agenda-timer' is active, the next time this function is called from it's main idle timer, deactivate `mm/refresh-agenda-timer'."
   (when mm/refresh-agenda-timer
@@ -990,7 +1001,7 @@
 (use-package vterm
   :straight t
   :config
-  (setq vterm-always-compile-module t))
+  (setq vterm-always-compile-module t)) ;don't ask about compiling module on startup
 
 
 ;; ---------------------------------
@@ -1003,8 +1014,7 @@
 ;; Eldoc shows function definition hints in the echo area
 (use-package eldoc
   :straight (:type built-in)
-  :delight
-  :config)
+  :delight)
 
 ;; Flycheck is activated by specific language modes.
 ;; See `:hook's in language modes below to see which ones use it.
@@ -1174,17 +1184,6 @@
 
 
 ;; ---------------------------------
-;; Improved HOME key behavior
-;; --------------------------
-;; Something bugs me about HOME
-;; moving POINT to the actual
-;; beginning of the line. I want it
-;; to go to the beginning of the
-;; text (i.e. follow indentation)
-;; ---------------------------------
-
-
-;; ---------------------------------
 ;; Movement
 ;; --------
 ;; MMOSMacs uses s-IJKLUO keybinds
@@ -1250,6 +1249,8 @@
 ;; Fix "IK" M-arrow movement for org-mode
 (define-key org-mode-map (kbd "s-M-i") (kbd "M-<up>"))
 (define-key org-mode-map (kbd "s-M-k") (kbd "M-<down>"))
+(define-key org-mode-map (kbd "s-M-j") (kbd "M-<left>"))
+(define-key org-mode-map (kbd "s-M-l") (kbd "M-<right>"))
 
 
 ;; ---------------------------------
