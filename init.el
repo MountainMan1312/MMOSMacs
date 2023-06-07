@@ -530,7 +530,10 @@
 ;; Enable `cua-selection-mode' for
 ;; rectangular selection.
 (add-hook 'after-init-hook 'cua-selection-mode)
-(global-set-key (kbd "s-c") 'rectangle-mark-mode)
+(global-set-key (kbd "s-c") 'cua-rectangle-mark-mode)
+(set-face-attribute 'cua-rectangle nil
+                    :background "#110"
+                    :foreground nil)
 
 
 ;; ---------------------------------
