@@ -302,6 +302,20 @@
   :hook (prog-mode . hl-line-mode))
 
 
+;; ---------------------------------
+;; Hide text for privacy
+;; ---------------------
+;; Sometimes you just don't want
+;; people reading your stuff.
+;; ---------------------------------
+
+(use-package redacted
+  :straight t
+  :config
+  (global-set-key (kbd "s-p") 'redacted-mode))
+(add-hook 'redacted-mode-hook (lambda () (read-only-mode (if redacted-mode 1 -1))))
+
+
 
 
 ;; ---------------------------------------------------------------------
