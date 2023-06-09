@@ -1088,6 +1088,21 @@
 
 
 ;; ---------------------------------
+;; Racket + SICP
+;; -------------
+;; The Wizard Book
+;; ---------------------------------
+
+;; Racket
+(use-package racket-mode
+  :straight t)
+
+;; SICP
+(use-package sicp
+  :straight t)
+
+
+;; ---------------------------------
 ;; sh / Bash
 ;; ----------
 ;; Scripts for POSIX Shell and Bash.
