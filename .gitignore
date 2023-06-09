@@ -9,6 +9,7 @@ org-roam.db
 projectile.cache
 projectile-bookmarks.eld
 projectile-known-projects.eld
+racket-mode/
 straight/
 tramp
 transient/
