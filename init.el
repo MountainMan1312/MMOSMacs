@@ -444,6 +444,18 @@
                 vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
+;; Customize appearance of line-numbers
+(set-face-attribute 'line-number nil
+                    :height 80
+                    :weight 'ultra-light
+                    :foreground "#222"
+                    :background "#0a0a0a")
+(set-face-attribute 'line-number-current-line nil
+                    :height 80
+                    :weight 'normal
+                    :foreground "orange"
+                    :background (face-attribute 'hl-line :background))
+
 
 
 ;; ---------------------------------
