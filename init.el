@@ -1000,21 +1000,21 @@
 
 ;; Update agenda periodically every `mm/refresh-agenda-time-seconds' seconds.
 ;; This was taken from https://emacs.stackexchange.com/a/68767/38877
-(defvar mm/refresh-agenda-time-seconds 15)
-(defvar mm/refresh-agenda-timer nil
-  "Timer for `mm/refresh-agenda-timer-function' to reschedule itself, or NIL.")
-(defun mm/refresh-agenda-timer-function ()
-  "If the user types a command while `mm/refresh-agenda-timer' is active, the next time this function is called from it's main idle timer, deactivate `mm/refresh-agenda-timer'."
-  (when mm/refresh-agenda-timer
-    (cancel-timer mm/refresh-agenda-timer))
-  ;;(lambda () (save-window-excursion (org-agenda nil "a")))
-  (save-window-excursion (org-agenda nil "a"))
-  (setq mm/refresh-agenda-timer
-        (run-with-idle-timer
-         (time-add (current-idle-time) mm/refresh-agenda-time-seconds)
-         nil
-         'mm/refresh-agenda-timer-function)))
-(run-with-idle-timer mm/refresh-agenda-time-seconds t 'mm/refresh-agenda-timer-function)
+;; (defvar mm/refresh-agenda-time-seconds 15)
+;; (defvar mm/refresh-agenda-timer nil
+  ;; "Timer for `mm/refresh-agenda-timer-function' to reschedule itself, or NIL.")
+;; (defun mm/refresh-agenda-timer-function ()
+  ;; "If the user types a command while `mm/refresh-agenda-timer' is active, the next time this function is called from it's main idle timer, deactivate `mm/refresh-agenda-timer'."
+  ;; (when mm/refresh-agenda-timer
+    ;; (cancel-timer mm/refresh-agenda-timer))
+  ;; (lambda () (save-window-excursion (org-agenda nil "a")))
+  ;; (save-window-excursion (org-agenda nil "a"))
+  ;; (setq mm/refresh-agenda-timer
+        ;; (run-with-idle-timer
+         ;; (time-add (current-idle-time) mm/refresh-agenda-time-seconds)
+         ;; nil
+         ;; 'mm/refresh-agenda-timer-function)))
+;; (run-with-idle-timer mm/refresh-agenda-time-seconds t 'mm/refresh-agenda-timer-function)
 
 
 
