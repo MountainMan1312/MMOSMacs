@@ -247,6 +247,10 @@
   :delight
   :hook (prog-mode . rainbow-mode))
 
+;; Modeline
+(set-face-attribute 'mode-line nil
+                    :height 80)
+
 
 ;; ---------------------------------
 ;; Fonts
