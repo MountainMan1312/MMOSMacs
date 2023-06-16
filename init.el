@@ -976,11 +976,7 @@
         org-agenda-start-day "0d"
         org-agenda-start-on-weekday nil
         org-agenda-use-time-grid t
-        org-agenda-time-grid (quote ((daily today remove-match)
-                                     (0 100 200 300 400 500 600 700 800 900
-                                        1000 1100 1200 1300 1400 1500 1600
-                                        1700 1800 1900 2000 2100 2200 2300)
-                                     "......." "."))
+        org-agenda-time-grid (quote ((daily today remove-match)))
         org-agenda-include-diary t
         org-agenda-show-future-repeats nil
         org-agenda-repeating-timestamp-show-all nil
