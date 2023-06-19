@@ -852,6 +852,16 @@
                        '(:immediate-finish)))))
     (apply #'org-roam-node-insert args)))
 
+;; Capture notes quickly into an inbox to be dealt with later
+(defun mm/org-roam-capture-inbox ()
+  "Capture something to `inbox.org'"
+  (interactive)
+  (org-roam-capture- :node (org-roam-node-create)
+                     :templates '(("i" "inbox" plain "\n* [%<%Y-%m-%d %a %H:%M>] %?"
+                                   :if-new (file+head "inbox.org"
+                                                      "#+TITLE: Inbox\n")))))
+(global-set-key (kbd "C-c n c") 'mm/org-roam-capture-inbox)
+
 ;; Add Dendron-like note refactoring functionality
 ;; This was taken from https://github.com/vicrdguez/dendroam
 (cl-defmethod mm/org-roam-node-current-file (node)
@@ -938,7 +948,7 @@
   (require 'org-roam-dailies)
   (setq org-roam-dailies-directory "")
   :bind (("C-c n f"   . org-roam-node-find)
-         ("C-c n c"   . org-roam-capture)
+         ("C-c n c"   . mm/org-roam-capture-inbox)
          ("C-c n d t" . org-roam-dailies-goto-today)
          ("C-c n d y" . org-roam-dailies-goto-yesterday)
          ("C-c n i"   . mm/org-roam-node-insert-immediate)
@@ -973,7 +983,9 @@
   (org-indent-mode)
   :config
   (setq org-agenda-start-with-log-mode t
-        org-agenda-files '("~/kb/agenda.org")
+        org-agenda-files '("~/kb/agenda.org"
+                           "~/kb/agenda.archive.org"
+                           "~/kb/inbox.org")
         org-todo-keywords
         '((sequence "TODO(t)" "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)"
                     "REVIEW(re)" "|" "DONE(d)" "CANCELED(ca)")
