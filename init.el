@@ -1307,9 +1307,13 @@
 
 ;; Fix "IK" M-arrow movement for org-mode
 (define-key org-mode-map (kbd "s-M-i") (kbd "M-<up>"))
+(define-key org-mode-map (kbd "s-M-I") (kbd "M-S-<up>"))
 (define-key org-mode-map (kbd "s-M-k") (kbd "M-<down>"))
+(define-key org-mode-map (kbd "s-M-K") (kbd "M-S-<down>"))
 (define-key org-mode-map (kbd "s-M-j") (kbd "M-<left>"))
+(define-key org-mode-map (kbd "s-M-J") (kbd "M-S-<left>"))
 (define-key org-mode-map (kbd "s-M-l") (kbd "M-<right>"))
+(define-key org-mode-map (kbd "s-M-L") (kbd "M-S-<right>"))
 
 
 ;; ---------------------------------
