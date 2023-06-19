@@ -249,7 +249,16 @@
 
 ;; Modeline
 (set-face-attribute 'mode-line nil
-                    :height 80)
+                    :height 80
+                    :box nil
+                    :foreground "orange"
+                    :background "#222")
+(set-face-attribute 'mode-line-inactive nil
+                    :box nil
+                    :foreground "#222"
+                    :background "#111")
+(set-face-attribute 'mode-line-buffer-id nil
+                    :foreground "orange")
 
 
 ;; ---------------------------------
@@ -302,8 +311,9 @@
 ;; Highlight current line
 (use-package hl-line
   :straight (:type built-in)
-  :config (set-face-attribute 'hl-line nil :background "#111")
   :hook (prog-mode . hl-line-mode))
+(require 'hl-line)
+(set-face-attribute 'hl-line nil :background "#111")
 
 
 ;; ---------------------------------
