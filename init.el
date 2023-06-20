@@ -980,7 +980,6 @@
 ;; Agenda configuration
 (use-package org
   :delight
-  (org-indent-mode)
   :config
   (setq org-agenda-start-with-log-mode t
         org-agenda-files '("~/kb/agenda.org"
