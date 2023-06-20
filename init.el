@@ -1327,6 +1327,10 @@
 (define-key org-mode-map (kbd "s-M-l") (kbd "M-<right>"))
 (define-key org-mode-map (kbd "s-M-L") (kbd "M-S-<right>"))
 
+;; Fix movement for corfu
+(define-key corfu-map (kbd "s-i") 'corfu-previous)
+(define-key corfu-map (kbd "s-k") 'corfu-next)
+
 
 ;; ---------------------------------
 ;; Buffer / Window Management
