@@ -448,15 +448,15 @@
 
 ;; Display line/column numbers
 (column-number-mode)
-(global-display-line-numbers-mode t)
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
 
 ;; Disable line numbers in specific modes
-(dolist (mode '(org-mode-hook
-                org-agenda-mode-hook
-                helpful-mode-hook
-                term-mode-hook
-                vterm-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+;; (dolist (mode '(org-mode-hook
+                ;; org-agenda-mode-hook
+                ;; helpful-mode-hook
+                ;; term-mode-hook
+                ;; vterm-mode-hook))
+  ;; (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Customize appearance of line-numbers
 (set-face-attribute 'line-number nil
