@@ -1324,18 +1324,36 @@
 ;; ---------------------------------
 ;; Insert date/time at POINT
 ;; -------------------------
-;; [YYYY-MM-DD HH:mm]
+;; Keybinds to quickly insert
+;; date/time at point in the correct
+;; format.
 ;; ---------------------------------
 
-(defvar mm/date-time-format "[%Y-%m-%d %a %H:%M]"
-  "Format of the date to insert with `mm/insert-date-time' function. See help of `format-time-string' for alternative formats.")
+;; Active timestamp
+(defvar mm/date-time-format-active "<%Y-%m-%d %a %H:%M>"
+  "Active date/time format for `mm/insert-date-time-active' function.
+See help of `format-time-string' for alternative formats.")
 
-(defun mm/insert-date-time ()
-  "Insert the current date time in the format of `mm/date-time-format' at POINT."
+(defun mm/insert-date-time-active ()
+  "Insert active timestamp at POINT in the format of `mm/date-time-format-active'."
   (interactive)
-  (insert (format-time-string mm/date-time-format (current-time))))
+  (insert (format-time-string mm/date-time-format-active (current-time))))
 
-(global-set-key (kbd "C-c i d") (lambda () (interactive) (mm/insert-date-time)))
+(global-set-key (kbd "C-c i D") (lambda () (interactive) (mm/insert-date-time-active)))
+
+;; Inactive timestamp
+(defvar mm/date-time-format-inactive "[%Y-%m-%d %a %H:%M]"
+  "Inactive timestamp format for `mm/insert-date-time-inactive' function.
+See help of `format-time-string' for alternative formats.")
+
+(defun mm/insert-date-time-inactive ()
+  "Insert inactive timestamp at POINT in the format of `mm/date-time-format-inactive'."
+  (interactive)
+  (insert (format-time-string mm/date-time-format-inactive (current-time))))
+
+(global-set-key (kbd "C-c i d") (lambda () (interactive) (mm/insert-date-time-inactive)))
+
+
 
 
 ;; ---------------------------------
