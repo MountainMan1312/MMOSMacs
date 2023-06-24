@@ -1327,7 +1327,7 @@
 ;; [YYYY-MM-DD HH:mm]
 ;; ---------------------------------
 
-(defvar mm/date-time-format "[%Y-%m-%d %H:%M]"
+(defvar mm/date-time-format "[%Y-%m-%d %a %H:%M]"
   "Format of the date to insert with `mm/insert-date-time' function. See help of `format-time-string' for alternative formats.")
 
 (defun mm/insert-date-time ()
@@ -1335,7 +1335,7 @@
   (interactive)
   (insert (format-time-string mm/date-time-format (current-time))))
 
-(global-set-key (kbd "C-c d") (lambda () (interactive) (mm/insert-date-time)))
+(global-set-key (kbd "C-c i d") (lambda () (interactive) (mm/insert-date-time)))
 
 
 ;; ---------------------------------
