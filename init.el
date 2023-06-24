@@ -750,8 +750,7 @@
 ;; is opened.
 (defun mm/org-mode-setup ()
   (org-indent-mode)
-  (visual-line-mode)
-  (variable-pitch-mode))
+  (visual-line-mode))
 
 ;; Org font stuff
 (defun mm/org-font-setup ()
@@ -773,27 +772,7 @@
                   (org-level-7 . 1.1)
                   (org-level-8 . 1.1)))
     (set-face-attribute (car face) nil
-                        :font "Noto Sans"
-                        :weight 'regular
-                        :height (cdr face))
-  ;; Ensure anything that should be
-  ;; fixed-pitch actually is.
-  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-table nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-formula nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-table nil :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-checkbox nil  :inherit 'fixed-pitch)
-  (set-face-attribute 'org-time-grid nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-scheduled nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-agenda-structure nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-agenda-date nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-agenda-date-today nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-agenda-current-time nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-agenda-calendar-event nil :inherit 'fixed-pitch)))
+                        :height (cdr face))))
 
 ;; `org' configuration
 (use-package org
