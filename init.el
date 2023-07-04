@@ -976,18 +976,24 @@
   :delight
   :config
   (setq org-agenda-start-with-log-mode t
-        org-agenda-files '("~/kb/agenda.org"
-                           "~/kb/inbox.org"
-                           "~/kb/log.org")
+        org-agenda-files (append '("~/kb/agenda.org"
+                                   "~/kb/self.routine.org"
+                                   "~/kb/inbox.org"
+                                   "~/kb/log.org"
+                                   "~/kb/shop.org")
+                                 (file-expand-wildcards "~/kb/*.agenda.org*"))
         org-todo-keywords
-        '((sequence "TODO(t)" "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)"
-                    "REVIEW(re)" "|" "DONE(d)" "CANCELED(ca)")
-          (sequence "EVENT(e)" "|" "MISSED_EVENT(me)" "ATTENDED_EVENT(ae)")
-          (sequence "APPT(ap)" "|" "MISSED_APPT(ma)" "ATTENDED_APPT(aa)")
-          (sequence "CLASS(cl)" "|" "ATTENDED_CLASS(ac)"
-                    "MISSED_CLASS(mc)" "CANCELED_CLASS(cc)")
-          (sequence "REMINDER(rm)"))
-        org-agenda-span 7
+        '((sequence "TODO(t)" "SOMEDAY(sd)" "SOON(sn)" "NEXT(n)"
+                    "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)" "REVIEW(re)"
+                    "|" "DONE(d)" "CANCELED(ca)")
+          (sequence "EVENT(e)"
+                    "|" "MISSED_EVENT(me)" "ATTENDED_EVENT(ae)")
+          (sequence "APPT(ap)"
+                    "|" "MISSED_APPT(ma)" "ATTENDED_APPT(aa)" "CANCELLED_APPT(ca)")
+          (sequence "CLASS(cl)"
+                    "|" "ATTENDED_CLASS(ac)" "MISSED_CLASS(mc)" "CANCELED_CLASS(cc)")
+          (sequence "ATE(a)"))
+        ;; org-agenda-span 1
         org-agenda-start-day "0d"
         org-agenda-start-on-weekday nil
         org-agenda-use-time-grid t
@@ -998,6 +1004,7 @@
         org-agenda-skip-scheduled-if-done t
         org-agenda-skip-deadline-if-done t
         org-agenda-show-done-always-green nil
+        org-deadline-warning-days 3
         org-agenda-compact-blocks t
         org-log-done 'time
         org-log-into-drawer t)
@@ -1006,11 +1013,47 @@
   (setq org-habit-show-habits t
         org-habit-show-habits-only-for-today nil
         org-habit-show-all-today nil
-        org-habit-graph-column 60
-        org-habit-following-days 1
-        org-habit-preceding-days 21)
-  :bind (("C-c a"   . org-agenda-list)
+        org-habit-graph-column 0
+        org-habit-following-days 0
+        org-habit-preceding-days 0)
+  :bind (("C-c a"   . org-agenda)
          ("C-c n a" . (lambda () (interactive) (find-file "~/kb/agenda.org")))))
+
+;; Super Agenda
+(use-package org-super-agenda
+  :straight t
+  :config
+  (org-super-agenda-mode))
+
+;; Custom Agenda views
+(use-package org-agenda
+  :config
+  (setq org-agenda-prefix-format '((agenda . " %-11s %-13:t %-12:c  ")
+                                   (todo . " %-11s %-13:t %-12:c  "))
+        org-agenda-custom-commands
+        '(("o" "Agenda Overview"
+           ((agenda "" ((org-agenda-span 'day)
+                        (org-agenda-overriding-header "")
+                        (org-super-agenda-groups
+                         '((:name "TODAY"
+                                  :discard (:and (:scheduled future :habit t))
+                                  :discard (:and (:deadline future :habit t))
+                                  :time-grid t
+                                  :date today
+                                  :scheduled t
+                                  :deadline t)
+                           (:discard (:anything t))))))
+            (alltodo "" ((org-agenda-overriding-header "")
+                         (org-super-agenda-groups
+                          '((:discard (:habit))
+                            (:name "IN-PROGRESS"
+                                   :todo ("IN-PROGRESS" "REVIEW"))
+                            (:name "OVERDUE"
+                                   :deadline past
+                                   :scheduled past)
+                            (:name "NEXT ACTIONS"
+                                   :todo "NEXT")
+                            (:discard (:anything t)))))))))))
 
 
 ;; Update agenda periodically every `mm/refresh-agenda-time-seconds' seconds.
