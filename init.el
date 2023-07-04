@@ -945,6 +945,8 @@
          ("C-c n d y" . org-roam-dailies-goto-yesterday)
          ("C-c n i"   . mm/org-roam-node-insert-immediate)
          ("C-c n I"   . org-roam-node-insert)
+         ("C-c n l s" . org-store-link)
+         ("C-c n l i" . org-insert-link)
          ("C-c n u"   . org-roam-update-org-id-locations)
          ("C-c n r h" . mm/org-roam-refactor-hierarchy)
          ("C-c n r f" . mm/org-roam-refactor-file)))
