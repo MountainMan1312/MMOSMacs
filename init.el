@@ -1372,6 +1372,10 @@
 (define-key corfu-map (kbd "s-i") 'corfu-previous)
 (define-key corfu-map (kbd "s-k") 'corfu-next)
 
+;; Fix movement for `pdf-view-mode'
+(define-key pdf-view-mode-map (kbd "s-C-i") 'pdf-view-previous-page-command)
+(define-key pdf-view-mode-map (kbd "s-C-k") 'pdf-view-next-page-command)
+
 
 ;; ---------------------------------
 ;; Buffer / Window Management
