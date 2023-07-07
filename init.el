@@ -932,7 +932,7 @@
    '(("d" "default" plain "%?"
       :unnarrowed t
       :if-new (file+head "${title}.org"
-                         "#+TITLE:"))))
+                         "#+TITLE:\n#+STARTUP: latexpreview inlineimages"))))
   (org-roam-dailies-capture-templates
    '(("d" "default" plain "%?"
       :unnarrowed t
