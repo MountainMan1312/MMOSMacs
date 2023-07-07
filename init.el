@@ -77,19 +77,6 @@
 
 
 ;; ---------------------------------
-;; Disable obsolete function warning
-;; ---------------------------------
-;; These warnings are really
-;; annoying.
-;; ---------------------------------
-
-(eval-when-compile
-  (dolist (sym '(cl-flet lisp-complete-symbol))
-    (setplist sym (use-package-plist-delete
-                   (symbol-plist sym) 'byte-obsolete-info))))
-
-
-;; ---------------------------------
 ;; Exclude modes from modeline list
 ;; --------------------------------
 ;; The modeline can get rather
