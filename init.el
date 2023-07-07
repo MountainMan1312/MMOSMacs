@@ -729,6 +729,24 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Documents
+;; ----------
+;; Stuff for working with various document formats.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; PDF
+;; ---
+;; Stuff for working with PDF files
+;; ---------------------------------
+
+(use-package pdf-tools
+  :straight t)
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Personal Knowledge Management System (PKMS)
 ;; --------------------------------------------
 ;; Using `org', `org-roam', and a note-hierarchy I've developed over
