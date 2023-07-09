@@ -780,17 +780,30 @@
                                    (match-beginning 1)
                                    (match-end 1)
                                    "•"))))))
-  ;; Set font sizes for org headings
-  (dolist (face '((org-level-1 . 1.1)
-                  (org-level-2 . 1.1)
-                  (org-level-3 . 1.1)
-                  (org-level-4 . 1.1)
-                  (org-level-5 . 1.1)
-                  (org-level-6 . 1.1)
-                  (org-level-7 . 1.1)
-                  (org-level-8 . 1.1)))
-    (set-face-attribute (car face) nil
-                        :height (cdr face))))
+  (set-face-attribute 'org-level-1 nil
+                      :height 1.1
+                      :foreground "SandyBrown")
+  (set-face-attribute 'org-level-2 nil
+                      :height 1.1
+                      :foreground "SandyBrown")
+  (set-face-attribute 'org-level-3 nil
+                      :height 1.1
+                      :foreground "SandyBrown")
+  (set-face-attribute 'org-level-4 nil
+                      :height 1.1
+                      :foreground "SandyBrown")
+  (set-face-attribute 'org-level-5 nil
+                      :height 1.1
+                      :foreground "SandyBrown")
+  (set-face-attribute 'org-level-6 nil
+                      :height 1.1
+                      :foreground "SandyBrown")
+  (set-face-attribute 'org-level-7 nil
+                      :height 1.1
+                      :foreground "SandyBrown")
+  (set-face-attribute 'org-level-8 nil
+                      :height 1.1
+                      :foreground "SandyBrown"))
 
 ;; `org' configuration
 (use-package org
