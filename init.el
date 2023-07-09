@@ -816,7 +816,9 @@
         org-hide-leading-stars t
         org-adapt-indentation t
         org-support-shift-select 'always
-        org-return-follows-link t)
+        org-return-follows-link t
+        org-image-actual-width nil
+        org-image-max-width 120)
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
   :bind
   ("C-c n l t" . org-toggle-link-display)
@@ -843,6 +845,11 @@
   :straight t
   :bind
   ("C-c n l o" . link-hint-open-link))
+
+;; Render animated GIFs
+(use-package org-inline-anim
+  :straight t
+  :hook (org-mode . org-inline-anim-mode))
 
 
 ;; ---------------------------------
@@ -1091,6 +1098,34 @@
          ;; nil
          ;; 'mm/refresh-agenda-timer-function)))
 ;; (run-with-idle-timer mm/refresh-agenda-time-seconds t 'mm/refresh-agenda-timer-function)
+
+
+;; ---------------------------------
+;; Math notes
+;; ----------
+;; I'm studying math, might as well
+;; take some notes
+;; ---------------------------------
+
+;; AUCTeX
+(use-package tex
+  :straight auctex
+  :config
+  (setq TeX-auto-save t
+        TeX-parse-self t
+        org-format-latex-options (plist-put org-format-latex-options
+                                            :scale 1.75)))
+
+;; CDLaTeX
+(use-package cdlatex
+  :straight t
+  :hook (org-mode . org-cdlatex-mode))
+
+;; Automatically toggle LaTeX previews
+;; when cursor enters/exits them.
+(use-package org-fragtog
+  :straight t
+  :hook (org-mode . org-fragtog-mode))
 
 
 
