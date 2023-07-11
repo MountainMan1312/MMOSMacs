@@ -1201,7 +1201,11 @@
 (use-package elisp-mode
   :straight (:type built-in)
   :commands (emacs-lisp-mode)
-  :hook (emacs-lisp-mode . flycheck-mode))
+  :hook
+  (emacs-lisp-mode . flycheck-mode)
+  (emacs-lisp-mode . (lambda ()
+                       (add-hook 'local-write-file-hooks
+                                 'check-parens))))
 
 
 ;; ---------------------------------
