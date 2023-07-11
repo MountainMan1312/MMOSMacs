@@ -1094,8 +1094,13 @@
                             (:discard (:anything t)))))))))))
 
 ;; Save org files before updating Agenda view
-(advice-add 'org-agenda-redo :before 'org-save-all-org-buffers)
-(advice-add 'org-agenda-redo-all :before 'org-save-all-org-buffers)
+(defun mm/org-agenda-save-all-redo-all ()
+  ""
+  (interactive)
+  (progn
+    (org-save-all-org-buffers)
+    (org-agenda-redo-all)))
+(define-key org-agenda-keymap (kbd "g") 'mm/org-agenda-save-all-redo-all)
 
 
 ;; Update agenda periodically every `mm/refresh-agenda-time-seconds' seconds.
