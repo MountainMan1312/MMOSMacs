@@ -19,4 +19,4 @@ setxkbmap -option caps:super
 
 
 # Start emacs
-exec dbus-launch --exit-with-session emacs
+exec dbus-launch --exit-with-session emacs --debug-init
