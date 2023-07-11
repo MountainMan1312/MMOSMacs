@@ -14,5 +14,9 @@ xsetroot -cursor_name left_ptr
 xset r rate 200 60
 
 
+# Fix keyboard
+setxkbmap -option caps:super
+
+
 # Start emacs
 exec dbus-launch --exit-with-session emacs
