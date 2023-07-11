@@ -1091,6 +1091,10 @@
                                    :todo "NEXT")
                             (:discard (:anything t)))))))))))
 
+;; Save org files before updating Agenda view
+(advice-add 'org-agenda-redo :before 'org-save-all-org-buffers)
+(advice-add 'org-agenda-redo-all :before 'org-save-all-org-buffers)
+
 
 ;; Update agenda periodically every `mm/refresh-agenda-time-seconds' seconds.
 ;; This was taken from https://emacs.stackexchange.com/a/68767/38877
