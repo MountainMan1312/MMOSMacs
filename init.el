@@ -740,8 +740,19 @@
 ;; Stuff for working with PDF files
 ;; ---------------------------------
 
+(defvar mm/pdf-view-midnight-foreground (face-attribute 'default :foreground)
+  "FOREGROUND to be used by `pdf-view-midnight-colors'.")
+
+(defvar mm/pdf-view-midnight-background (face-attribute 'default :background)
+  "BACKGROUND to be used by `pdf-view-midnight-colors'.")
+
 (use-package pdf-tools
-  :straight t)
+  :straight t
+  :config
+  (setq pdf-view-use-scaling nil
+        doc-view-resolution 144
+        pdf-view-midnight-colors
+        `(,mm/pdf-view-midnight-foreground . ,mm/pdf-view-midnight-background)))
 
 
 
