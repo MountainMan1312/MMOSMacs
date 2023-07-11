@@ -749,8 +749,9 @@
 (use-package pdf-tools
   :straight t
   :config
-  (setq pdf-view-use-scaling nil
-        doc-view-resolution 144
+  (setq pdf-view-use-imagemagick t
+        pdf-view-use-scaling nil
+        doc-view-resolution 300
         pdf-view-midnight-colors
         `(,mm/pdf-view-midnight-foreground . ,mm/pdf-view-midnight-background)))
 
