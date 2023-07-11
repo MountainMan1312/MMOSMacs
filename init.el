@@ -819,7 +819,9 @@
 ;; `org' configuration
 (use-package org
   :straight t
-  :hook (org-mode . mm/org-mode-setup)
+  :hook
+  (org-mode . mm/org-mode-setup)
+  (org-mode . auto-revert-mode)
   :config
   (mm/org-font-setup)
   (setq org-startup-folded t
