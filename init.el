@@ -1096,7 +1096,7 @@
 
 ;; Save org files before updating Agenda view
 (defun mm/org-agenda-revert-redo-save-all ()
-  ""
+  "Revert then save all `org-mode' buffers, then `org-agenda-redo-all'."
   (interactive)
   (progn
     (org-revert-all-org-buffers)
