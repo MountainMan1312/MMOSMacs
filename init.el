@@ -1407,10 +1407,10 @@
 (global-set-key (kbd "s-C-S-k") (kbd "<C-S-down>"))
 
 ;; Home
-(global-set-key (kbd "<home>") 'beginning-of-line-text)
+(global-set-key (kbd "<home>") 'beginning-of-visual-line)
 (global-set-key (kbd "s-u") (kbd "<home>"))
 (global-set-key (kbd "s-U") (kbd "S-<home>"))
-(global-set-key (kbd "C-<home>") 'beginning-of-visual-line)
+(global-set-key (kbd "C-<home>") 'beginning-of-line-text)
 (global-set-key (kbd "s-C-u") (kbd "C-<home>"))
 (global-set-key (kbd "s-C-S-u") (kbd "C-S-<home>"))
 
