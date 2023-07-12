@@ -8,7 +8,7 @@ MMOSMacs is the core of my computing experience, and is meant to be a jack of al
 
 ### Current Features
 
-- Illiterate configuration (like literate but with comments instead of `org-mode`)
+- Illiterate configuration
 - Modern configuration using `straight.el` and `use-package`
 - Emacs as a desktop environment (EXWM)
 - The beginnings of an opinionated ergonomic keybind setup (still a long ways off though)
@@ -24,8 +24,8 @@ MMOSMacs is the core of my computing experience, and is meant to be a jack of al
   - POSIX Shell, bash
   - Emacs Lisp, Common Lisp
   - Assembly, C, Haskell
-  - SQL, AQL, DQL, GraphQL, Cypher
-  - CSV, JSON, XML, YAML
+  - SQL, AQL, DQL
+  - CSV, JSON, XML
   - Markdown, HTML, JS, CSS
 - Communications platform
   - Email, mailing lists
@@ -74,27 +74,43 @@ ln -s ~/.emacs.d/.sbclrc ~/.sbclrc
 
 ### Install necessary packages
 
-You'll also need the following packages installed on your system. Gentoo packages are listed, you'll have to find your distro's equivalent on your own:
+You'll also need the following packages installed on your system. Gentoo packages are listed here along with their USE flags.
 
-- app-admin/sudo
-- app-dicts/aspell
-- app-editors/emacs (USE="dynamic-loading gui jit libxml2 threads")
-- app-emacs/emacs-common (USE="gui libxml2 X")
-- app-emacs/emacs-daemon
-- dev-lang/ghc
-- dev-lang/rust
-- dev-lang/sbcl
-- dev-util/shellcheck
-- dev-vcs/git
-- media-fonts/jetbrains-mono
-- media-fonts/noto
-- net-libs/nodejs
-- net-p2p/syncthing
-- sys-devel/gcc (USE="jit")
-- x11-apps/setxkbmap
-- x11-base/xorg-server
-- x11-misc/arandr
-
+```
+app-admin/sudo
+app-dicts/aspell
+app-editors/emacs cairo dbus dynamic-loading gif gui jit jpeg libxml2 png ssl svg threads tiff X xft zlib
+app-emacs/emacs-common gui libxml2 X
+app-emacs/emacs-daemon
+app-emacs/pdf-tools
+app-text/poppler png cairo
+app-text/texlive X extra graphics png truetype
+app-text/texlive-core xetex
+dev-lang/ghc
+dev-lang/rust clippy doc rustfmt
+dev-lisp/sbcl
+dev-scheme/racket
+dev-util/shellcheck hscolour
+dev-vcs/git
+media-libs/harfbuzz icu
+media-libs/libpng
+media-libs/libvpx postproc
+media-fonts/jetbrains-mono
+media-fonts/noto
+net-libs/nodejs
+net-p2p/syncthing tools
+sys-devel/autoconf
+sys-devel/automake
+sys-devel/gcc jit
+sys-devel/gdb
+sys-libs/glibc
+sys-libs/zlib
+x11-apps/setxkbmap
+x11-base/xorg-server
+x11-libs/cairo X
+x11-libs/libxkbcommon X
+x11-misc/arandr
+```
 
 ### Setup `~/kb` and Syncthing for `org-roam` knowledgebase
 
