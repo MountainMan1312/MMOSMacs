@@ -1238,6 +1238,9 @@
 (use-package racket-mode
   :straight t)
 
+(use-package ob-racket
+  :straight (:host github :repo "hasu/emacs-ob-racket"))
+
 ;; SICP
 (use-package sicp
   :straight t)
@@ -1261,6 +1264,26 @@
 (use-package lsp-mode
   :config
   (setq lsp-bash-highlight-parsing-errors t))
+
+
+;; ---------------------------------
+;; Literate programming
+;; --------------------
+;; Execute code directly in org-mode
+;; via `org-babel'
+;; ---------------------------------
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (lisp       . t)
+   (C          . t)
+   (makefile   . t)
+   (latex      . t)
+   (python     . t)
+   (racket     . t)))
+
+(setq org-confirm-babel-evaluate nil)
 
 
 
