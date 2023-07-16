@@ -1143,6 +1143,26 @@
   :hook (org-mode . org-fragtog-mode))
 
 
+;; ---------------------------------
+;; Diagrams
+;; --------
+;; Ditaa, GraphViz, and PlantUML
+;; ---------------------------------
+
+;; PlantUML
+(use-package plantuml-mode
+  :straight t
+  :config
+  (setq plantuml-executable-path "/usr/bin/plantuml"
+        org-plantuml-executable-path "/usr/bin/plantuml"
+        plantuml-default-exec-mode 'executable
+        org-plantuml-exec-mode 'plantuml))
+
+;; Ditaa
+(setq org-ditaa-jar-path "/usr/share/ditaa/lib/ditaa.jar"
+      org-ditaa-jar-option "-oS --svg")
+
+
 
 
 ;; ---------------------------------------------------------------------
@@ -1276,15 +1296,24 @@
 
 (org-babel-do-load-languages
  'org-babel-load-languages
- '((emacs-lisp . t)
-   (lisp       . t)
+ '(;; Programming languages
    (C          . t)
-   (makefile   . t)
+   (emacs-lisp . t)
    (latex      . t)
+   (lisp       . t)
+   (makefile   . t)
    (python     . t)
-   (racket     . t)))
+   (racket     . t)
+   ;; Diagrams
+   (ditaa      . t)
+   (dot        . t)
+   (plantuml   . t)))
 
+;; Don't ask every time I want to evaluate something
 (setq org-confirm-babel-evaluate nil)
+
+;; Redisplay inline images after execute code block
+(add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
 
 
 
