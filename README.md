@@ -92,6 +92,9 @@ dev-lisp/sbcl
 dev-scheme/racket
 dev-util/shellcheck hscolour
 dev-vcs/git
+media-gfx/ditaa
+media-gfx/graphviz
+media-gfx/plantuml
 media-libs/harfbuzz icu
 media-libs/libpng
 media-libs/libvpx postproc
