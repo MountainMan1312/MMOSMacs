@@ -1043,6 +1043,7 @@
         org-agenda-skip-scheduled-if-done t
         org-agenda-skip-deadline-if-done t
         org-agenda-show-done-always-green nil
+        org-priority-faces (quote ((65 . "red") (66 . "OrangeRed") (67 . "DarkOrange") (68 . "peru")))
         org-deadline-warning-days 3
         org-agenda-compact-blocks t
         org-log-done 'time
