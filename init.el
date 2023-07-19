@@ -1018,8 +1018,8 @@
         org-agenda-files (append '("~/kb/agenda.org"
                                    "~/kb/self.routine.org"
                                    "~/kb/inbox.org"
-                                   "~/kb/log.org"
                                    "~/kb/shop.org")
+                                 (file-expand-wildcards "~/kb/*.log.org*")
                                  (file-expand-wildcards "~/kb/*.agenda.org*"))
         org-todo-keywords
         '((sequence "TODO(t)" "SOMEDAY(sd)" "SOON(sn)" "NEXT(n)"
