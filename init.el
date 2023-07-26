@@ -195,10 +195,33 @@
                                               (start-process-shell-command
                                                command nil command)))
                                  ;; Switch workspace with `s-w'
-                                 ([?\s-w] . exwm-workspace-switch)))
-  (exwm-enable))
+                                 ([?\s-w] . exwm-workspace-switch))))
 
+;; Named workspaces
+(setq exwm-workspace-index-map (lambda (index)
+                                 (let ((named-workspaces ["0:Admin"
+                                                          "1:Agenda"
+                                                          "2:KB"
+                                                          "3:IDE"]))
+                                   (if (< index (length named-workspaces))
+                                       (elt named-workspaces index)
+                                     (number-to-string index)))))
 
+(defun mm/exwm-workspace--update-ewmh-desktop-names ()
+  "Update the names of desktops in `exwm-workspace-index-map'."
+  (xcb:+request exwm--connection
+      (make-instance 'xcb:ewmh:set-_NET_DESKTOP_NAMES
+                     :window exwm--root :data
+                     (mapconcat (lambda (i) (funcall exwm-workspace-index-map i))
+                                (number-sequence 0 (1- (exwm-workspace--count)))
+                                "\0"))))
+
+(add-hook 'exwm-workspace-list-change-hook
+          #'mm/exwm-workspace--update-ewmh-desktop-names)
+
+;; Start EXWM
+(exwm-enable)
+(mm/exwm-workspace--update-ewmh-desktop-names)
 ;; ---------------------------------
 ;; Temporary theme
 ;; ---------------
