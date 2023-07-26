@@ -174,7 +174,7 @@
   :straight t
   :config
   (require 'exwm-config)
-  (setq exwm-workspace-number 1
+  (setq exwm-workspace-number 4
         exwm-input-prefix-keys '(?\C-h
                                  ?\C-u
                                  ?\C-x
