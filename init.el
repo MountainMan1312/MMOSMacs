@@ -282,6 +282,35 @@
 
 
 ;; ---------------------------------
+;; Modeline
+;; --------
+;; I'm losing the will to give a
+;; shit about these descriptions.
+;; ---------------------------------
+
+;; Display time in modeline
+(defvar mm/display-time-format-string "%H:%M"
+  "Time format for `display-time-mode'.")
+
+(setq display-time-format mm/display-time-format-string
+      display-time-default-load-average nil)
+
+(defface mm/display-time-face
+  '((((type x w32 mac))
+     (:foreground "DeepSkyBlue")))
+  "Face used to display the time in the modeline.")
+
+(setq display-time-string-forms
+      '((propertize (concat " " 24-hours ":" minutes " ")
+                    'face 'mm/display-time-face)))
+
+(display-time-mode)
+
+
+;; Display battery percentage in modeline
+(display-battery-mode)
+
+;; ---------------------------------
 ;; Icons
 ;; -----
 ;; Icons make it easy to recongnize
