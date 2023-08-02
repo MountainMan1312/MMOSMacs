@@ -289,11 +289,7 @@
 ;; ---------------------------------
 
 ;; Display time in modeline
-(defvar mm/display-time-format-string "%H:%M"
-  "Time format for `display-time-mode'.")
-
-(setq display-time-format mm/display-time-format-string
-      display-time-default-load-average nil)
+(setq display-time-default-load-average nil)
 
 (defface mm/display-time-face
   '((((type x w32 mac))
@@ -301,11 +297,14 @@
   "Face used to display the time in the modeline.")
 
 (setq display-time-string-forms
-      '((propertize (concat " " 24-hours ":" minutes " ")
+      '((propertize (concat
+                     "[ "
+                     (format-time-string "%Y-%m-%d" (current-time))
+                     " ]"
+                     "[ " 24-hours ":" minutes " ]")
                     'face 'mm/display-time-face)))
 
 (display-time-mode)
-
 
 ;; Display battery percentage in modeline
 (display-battery-mode)
