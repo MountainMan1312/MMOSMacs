@@ -307,6 +307,11 @@
 (display-time-mode)
 
 ;; Display battery percentage in modeline
+(use-package emacs
+  :config
+  (setq battery-mode-line-format "[ %b%p%% ]"
+        battery-load-low 30
+        battery-load-critical 15))
 (display-battery-mode)
 
 ;; ---------------------------------
