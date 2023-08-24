@@ -1059,6 +1059,7 @@
 ;; Web-served graph UI for org-roam.
 (use-package org-roam-ui
   :straight t
+  :delight (org-roam-ui-mode)
   :config
   (setq org-roam-ui-sync-theme t
         org-roam-ui-follow t
@@ -1200,6 +1201,7 @@
 ;; CDLaTeX
 (use-package cdlatex
   :straight t
+  :delight (org-cdlatex-mode)
   :hook (org-mode . org-cdlatex-mode))
 
 ;; Automatically toggle LaTeX previews
