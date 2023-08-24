@@ -174,12 +174,14 @@
   :straight t
   :config
   (require 'exwm-config)
-  (setq exwm-workspace-number 4
+  (setq exwm-workspace-number 6
         exwm-workspace-index-map (lambda (index)
                                    (let ((named-workspaces ["0:Admin"
                                                             "1:Agenda"
                                                             "2:KB"
-                                                            "3:IDE"]))
+                                                            "3:IDE"
+                                                            "4:School"
+                                                            "5:Reading"]))
                                      (if (< index (length named-workspaces))
                                          (elt named-workspaces index)
                                        (number-to-string index))))
