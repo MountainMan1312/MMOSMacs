@@ -278,9 +278,32 @@
 ;; Noto Sans.
 ;; ---------------------------------
 
+;; Fonts
 (set-face-attribute 'default nil :font "JetBrains Mono" :height 100)
 (set-face-attribute 'fixed-pitch nil :font "JetBrains Mono" :height 100)
 (set-face-attribute 'variable-pitch nil :font "Noto Sans" :height 110 :weight 'regular)
+
+;; Syntax highlighting
+(use-package lisp-extra-font-lock
+  :straight t)
+(lisp-extra-font-lock-global-mode)
+
+(custom-set-faces '(font-lock-warning-face
+                    ((t :foreground "black"
+                        :background "firebrick"
+                        :bold nil
+                        :underline nil
+                        :inherit nil))))
+(custom-set-faces '(lisp-extra-font-lock-special-variable-name
+                    ((t :foreground "tomato"
+                        :inherit nil))))
+(custom-set-faces '(font-lock-constant-face
+                    ((t :foreground "SaddleBrown"
+                        :inherit nil))))
+
+(custom-set-faces '(lisp-extra-font-lock-quoted
+                    ((t :foreground "RoyalBlue"
+                        :inherit nil))))
 
 
 ;; ---------------------------------
