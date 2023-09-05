@@ -72,7 +72,7 @@ Optionally create a symlink to the `.sbclrc` file for SBCL:
 ln -s ~/.emacs.d/.sbclrc ~/.sbclrc
 ```
 
-### Install necessary packages
+### Install Dependencies
 
 You'll also need the following packages installed on your system. Gentoo packages are listed here along with their USE flags.
 
