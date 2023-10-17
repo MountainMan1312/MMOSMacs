@@ -1080,12 +1080,12 @@
 (defun mm/org-agenda-update-agenda-files ()
   "Update the list of `org-agenda-files'."
   (interactive)
-  org-agenda-files (append '("~/kb/agenda.org"
+  (org-agenda-files (append '("~/kb/agenda.org"
                              "~/kb/self.routine.org"
                              "~/kb/inbox.org"
                              "~/kb/shop.org")
                            (file-expand-wildcards "~/kb/*log.org*")
-                           (file-expand-wildcards "~/kb/*agenda.org*")))
+                           (file-expand-wildcards "~/kb/*agenda.org*"))))
 
 (use-package org
   :delight
