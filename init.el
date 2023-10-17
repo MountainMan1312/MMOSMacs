@@ -1198,6 +1198,10 @@
         org-format-latex-options (plist-put org-format-latex-options
                                             :scale 1.75)))
 
+;; Automatically preview LaTeX in *org-roam* buffers
+(add-hook 'org-roam-buffer-postrender-functions
+          (lambda () (org--latex-preview-region (point-min) (point-max))))
+
 ;; CDLaTeX
 (use-package cdlatex
   :straight t
