@@ -1080,7 +1080,6 @@
 (defun mm/org-agenda-update-agenda-files ()
   "Update the list of `org-agenda-files'."
   (interactive)
-  org-agenda-start-with-log-mode t
   org-agenda-files (append '("~/kb/agenda.org"
                              "~/kb/self.routine.org"
                              "~/kb/inbox.org"
