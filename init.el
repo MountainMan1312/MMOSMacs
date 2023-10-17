@@ -208,6 +208,13 @@
                                  ([?\s-w] . exwm-workspace-switch)))
   (exwm-enable))
 
+;; Setup multiple monitors & workspace assignments
+(require 'exwm-randr)
+(exwm-randr-enable)
+(start-process-shell-command "xrandr" nil "xrandr --output VGA-1 --off --output DP-1 --off --output HDMI-1 --mode 1920x1080 --pos 0x500 --rotate normal --output DP-2 --off --output HDMI-2 --mode 1920x1080 --pos 1920x0 --rotate left")
+(setq exwm-randr-workspace-monitor-plist
+      (pcase (system-name)
+        ("anu.tgwil.net" '(5 "HDMI-2"))))
 
 ;; ---------------------------------
 ;; Temporary theme
