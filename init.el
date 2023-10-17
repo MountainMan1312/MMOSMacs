@@ -1080,18 +1080,19 @@
 (defun mm/org-agenda-update-agenda-files ()
   "Update the list of `org-agenda-files'."
   (interactive)
-  (org-agenda-files (append '("~/kb/agenda.org"
-                             "~/kb/self.routine.org"
-                             "~/kb/inbox.org"
-                             "~/kb/shop.org")
-                           (file-expand-wildcards "~/kb/*log.org*")
-                           (file-expand-wildcards "~/kb/*agenda.org*"))))
+  (setq org-agenda-files (append '("~/kb/agenda.org"
+                                   "~/kb/self.routine.org"
+                                   "~/kb/inbox.org"
+                                   "~/kb/shop.org")
+                                 (file-expand-wildcards "~/kb/*log.org*")
+                                 (file-expand-wildcards "~/kb/*agenda.org*"))))
 
 (use-package org
   :delight
   :config
   (mm/org-agenda-update-agenda-files)
-  (setq org-todo-keywords
+  (setq org-agenda-start-with-log-mode t
+        org-todo-keywords
         '((sequence "TODO(t)" "SOMEDAY(s)" "SOON(o)" "NEXT(n)"
                     "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)" "REVIEW(r)"
                     "|" "DONE(d)" "CANCELED(c)")
