@@ -1076,29 +1076,33 @@
 ;; am quite forgetful.
 ;; ---------------------------------
 
-
 ;; Agenda configuration
+(defun mm/org-agenda-update-agenda-files ()
+  "Update the list of `org-agenda-files'."
+  (interactive)
+  org-agenda-start-with-log-mode t
+  org-agenda-files (append '("~/kb/agenda.org"
+                             "~/kb/self.routine.org"
+                             "~/kb/inbox.org"
+                             "~/kb/shop.org")
+                           (file-expand-wildcards "~/kb/*log.org*")
+                           (file-expand-wildcards "~/kb/*agenda.org*")))
+
 (use-package org
   :delight
   :config
-  (setq org-agenda-start-with-log-mode t
-        org-agenda-files (append '("~/kb/agenda.org"
-                                   "~/kb/self.routine.org"
-                                   "~/kb/inbox.org"
-                                   "~/kb/shop.org")
-                                 (file-expand-wildcards "~/kb/*log.org*")
-                                 (file-expand-wildcards "~/kb/*agenda.org*"))
-        org-todo-keywords
-        '((sequence "TODO(t)" "SOMEDAY(sd)" "SOON(sn)" "NEXT(n)"
-                    "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)" "REVIEW(re)"
-                    "|" "DONE(d)" "CANCELED(ca)")
-          (sequence "EVENT(e)"
-                    "|" "MISSED_EVENT(me)" "ATTENDED_EVENT(ae)")
-          (sequence "APPT(ap)"
-                    "|" "MISSED_APPT(ma)" "ATTENDED_APPT(aa)" "CANCELLED_APPT(ca)")
-          (sequence "CLASS(cl)"
-                    "|" "ATTENDED_CLASS(ac)" "MISSED_CLASS(mc)" "CANCELED_CLASS(cc)")
-          (sequence "ATE(a)"))
+  (mm/org-agenda-update-agenda-files)
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "SOMEDAY(s)" "SOON(o)" "NEXT(n)"
+                    "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)" "REVIEW(r)"
+                    "|" "DONE(d)" "CANCELED(c)")
+          (sequence "EVENT(t)" "EVENT_IN-PROGRESS(i)"
+                    "|" "MISSED_EVENT(m)" "CANCELLED_EVENT(c)" "ATTENDED_EVENT(d)")
+          (sequence "APPT(t)" "APPT_IN-PROGRESS(i)"
+                    "|" "MISSED_APPT(m)" "ATTENDED_APPT(d)" "CANCELLED_APPT(c)")
+          (sequence "CLASS(t)" "CLASS_IN-PROGRESS(i)"
+                    "|" "ATTENDED_CLASS(d)" "MISSED_CLASS(m)" "CANCELED_CLASS(c)")
+          (sequence "EAT(t)" "EATING(i)" "|" "ATE(a)"))
         ;; org-agenda-span 1
         org-agenda-start-day "0d"
         org-agenda-start-on-weekday nil
@@ -1124,7 +1128,8 @@
         org-habit-following-days 0
         org-habit-preceding-days 0)
   :bind (("C-c a"   . org-agenda)
-         ("C-c n a" . (lambda () (interactive) (find-file "~/kb/agenda.org")))))
+         ("C-c n a" . (lambda () (interactive) (find-file "~/kb/agenda.org")))
+         ("C-c n s" . org-save-all-org-buffers)))
 
 ;; Super Agenda
 (use-package org-super-agenda
