@@ -205,7 +205,8 @@
                                               (start-process-shell-command
                                                command nil command)))
                                  ;; Switch workspace with `s-w'
-                                 ([?\s-w] . exwm-workspace-switch)))
+                                 ([?\s-w] . exwm-workspace-switch)
+                                 ([?\s-g] . exwm-floating-toggle-floating)))
   (exwm-enable))
 
 ;; Setup multiple monitors & workspace assignments
