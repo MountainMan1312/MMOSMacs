@@ -361,6 +361,7 @@
 ;; Add icons to dired buffers
 (use-package all-the-icons-dired
   :straight t
+  :config (setq all-the-icons-dired-monochrome nil)
   :hook (dired-mode . all-the-icons-dired-mode))
 
 ;; Add icons to completion candidates
