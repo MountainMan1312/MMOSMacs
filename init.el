@@ -834,11 +834,15 @@
 (use-package pdf-tools
   :straight t
   :config
+  (add-to-list 'auto-mode-alist '("\\.pdf\\'" . pdf-view-mode))
   (setq pdf-view-use-imagemagick t
         pdf-view-use-scaling nil
         doc-view-resolution 300
         pdf-view-midnight-colors
-        `(,mm/pdf-view-midnight-foreground . ,mm/pdf-view-midnight-background)))
+        `(,mm/pdf-view-midnight-foreground . ,mm/pdf-view-midnight-background))
+  :hook (pdf-view-mode . pdf-view-themed-minor-mode))
+
+
 
 
 
