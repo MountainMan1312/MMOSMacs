@@ -843,6 +843,37 @@
   :hook (pdf-view-mode . pdf-view-themed-minor-mode))
 
 
+;; ---------------------------------
+;; EPUB
+;; ----
+;; E-book file format
+;; ---------------------------------
+
+(use-package nov
+  :straight t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+  (setq nov-save-place-file "~/kb/bookmarksEPUB"))
+
+
+;; ---------------------------------
+;; Muse
+;; ---------------------------------
+
+(use-package muse
+  :straight t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.muse\\'" . muse-mode)))
+
+
+;; ---------------------------------
+;; Bookmarks
+;; ---------
+;; I almost never remember where I
+;; left off reading.
+;; ---------------------------------
+
+(setq bookmark-file "~/kb/bookmarks")
 
 
 
