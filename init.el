@@ -1405,6 +1405,23 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Applications
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; Web Browsers
+;; ------------
+;; Gotta be able to browse the web
+;; ---------------------------------
+
+;; Default Browser
+(setq browse-url-firefox-program "firefox-bin")
+(setq browse-url-browser-function 'browse-url-firefox)
+
+
+
+
+;; ---------------------------------------------------------------------
 ;;; Keybinds
 ;; ---------
 ;; For now, just a few simple changes.
