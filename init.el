@@ -841,6 +841,7 @@
         pdf-view-midnight-colors
         `(,mm/pdf-view-midnight-foreground . ,mm/pdf-view-midnight-background))
   :hook (pdf-view-mode . pdf-view-themed-minor-mode))
+(require 'pdf-tools)
 
 
 ;; ---------------------------------
@@ -851,6 +852,7 @@
 
 (use-package nov
   :straight t
+  :after 'after-init-hook
   :config
   (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
   (setq nov-save-place-file "~/kb/bookmarksEPUB"))
