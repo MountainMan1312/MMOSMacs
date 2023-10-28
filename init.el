@@ -217,6 +217,11 @@
       (pcase (system-name)
         ("anu.tgwil.net" '(5 "HDMI-2"))))
 
+;; Make EXWM buffer names useful
+(add-hook 'exwm-update-class-hook
+          (lambda ()
+            (exwm-workspace-rename-buffer exwm-class-name)))
+
 ;; ---------------------------------
 ;; Temporary theme
 ;; ---------------
