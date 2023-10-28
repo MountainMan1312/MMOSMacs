@@ -2,8 +2,10 @@ auto-save-list/
 bookmarks
 .cache/
 eln-cache/
+elpa/
 eshell/
 games/
+.mc-lists.el
 .org-id-locations
 org-roam.db
 projectile.cache
