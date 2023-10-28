@@ -749,6 +749,16 @@
 
 
 ;; ---------------------------------
+;; Dired
+;; -----
+;; Various configurations for dired
+;; ---------------------------------
+
+(use-package dired-hacks
+  :straight t)
+
+
+;; ---------------------------------
 ;; Project management
 ;; ------------------
 ;; `Projectile' provides features
