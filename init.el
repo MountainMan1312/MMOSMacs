@@ -1301,6 +1301,19 @@
       org-ditaa-jar-option "-oS --svg")
 
 
+;; ---------------------------------
+;; Export org to HTML
+;; ------------------
+;; Sometimes I want to share my notes
+;; ---------------------------------
+
+(use-package htmlize
+  :straight t
+  :config
+  (setq org-html-htmlize-output-type 'css))
+
+
+
 
 
 ;; ---------------------------------------------------------------------
@@ -1452,6 +1465,16 @@
 
 ;; Redisplay inline images after execute code block
 (add-hook 'org-babel-after-execute-hook 'org-redisplay-inline-images)
+
+
+;; ---------------------------------
+;; HTTP Server
+;; -----------
+;; Test some websites why don't you
+;; ---------------------------------
+
+(use-package simple-httpd
+  :straight t)
 
 
 
