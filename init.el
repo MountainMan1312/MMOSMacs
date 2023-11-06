@@ -1168,6 +1168,8 @@
 
 (use-package org
   :delight
+  (org-agenda-mode)
+  (org-agenda-log-mode)
   :config
   (mm/org-agenda-update-agenda-files)
   (setq org-agenda-start-with-log-mode t
