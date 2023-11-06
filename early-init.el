@@ -78,7 +78,7 @@
 ;; damage
 ;; ---------------------------------
 
-(set-face-attribute 'default nil :background "#000000" :foreground "#c6a57b")
+(set-face-attribute 'default nil :background "#0a0a0a" :foreground "#c6a57b")
 
 
 

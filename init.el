@@ -397,6 +397,24 @@
 
 
 ;; ---------------------------------
+;; ADHD Accessibility
+;; ------------------
+;; I have ADHD, real bad. All this
+;; *shit* going on in Emacs can be
+;; detrimental to my attention.
+;;
+;; Make it easier to focus...
+;; ---------------------------------
+
+(use-package auto-dim-other-buffers
+  :straight t
+  :config (setq auto-dim-other-buffers-dim-on-focus-out t
+                auto-dim-other-buffers-dim-on-switch-to-minibuffer t))
+(set-face-attribute 'auto-dim-other-buffers-face nil :background "#000")
+(set-face-attribute 'auto-dim-other-buffers-hide-face nil :background "#000" :foreground "#000")
+
+
+;; ---------------------------------
 ;; Hide text for privacy
 ;; ---------------------
 ;; Sometimes you just don't want
