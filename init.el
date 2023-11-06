@@ -1153,6 +1153,7 @@
   :config
   (mm/org-agenda-update-agenda-files)
   (setq org-agenda-start-with-log-mode t
+        org-agenda-log-mode-items '(closed clock state)
         org-todo-keywords
         '((sequence "TODO(t)" "SOMEDAY(s)" "SOON(o)" "NEXT(n)"
                     "IN-PROGRESS(i)" "WAITING(w)" "HOLD(h)" "REVIEW(r)"
