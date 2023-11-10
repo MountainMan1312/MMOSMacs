@@ -412,6 +412,7 @@
                 auto-dim-other-buffers-dim-on-switch-to-minibuffer t))
 (set-face-attribute 'auto-dim-other-buffers-face nil :background "#000")
 (set-face-attribute 'auto-dim-other-buffers-hide-face nil :background "#000" :foreground "#000")
+(add-hook 'after-init-hook 'auto-dim-other-buffers-mode)
 
 
 ;; ---------------------------------
