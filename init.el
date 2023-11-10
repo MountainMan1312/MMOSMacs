@@ -1349,7 +1349,7 @@
 	          (setq txt (org-agenda-format-item
 		                   (cond
                         ;; CHANGES ARE HERE
-			                  (closedp (concat "Closed:      " (spaces-string 12)))
+			                  (closedp (concat "Closed:     " "CLOSED" (spaces-string 6)))
 			                  (statep (concat "State:      " state (spaces-string (- 12 (length state)))))
 			                  (t (concat "Clocked:    " clocked (spaces-string (- 12 (length clocked))))))
                        ;; END CHANGES
