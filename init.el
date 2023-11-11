@@ -697,6 +697,23 @@
 
 
 ;; ---------------------------------------------------------------------
+;;; Security
+;; ---------
+;; I'm studying to be a security professional, might as well start
+;; being secure about stuff.
+;; ---------------------------------------------------------------------
+
+;; ---------------------------------
+;; GPG
+;; ---
+;; Sign and encrypt files
+;; ---------------------------------
+
+(setq epa-pinentry-mode 'loopback
+      auth-source-debug t)
+
+
+;; ---------------------------------------------------------------------
 ;;; File, project, & repository management
 ;; ---------------------------------------
 ;; This section contains everything to do with file, project, & repo
