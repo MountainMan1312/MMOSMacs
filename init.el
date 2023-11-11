@@ -1243,9 +1243,9 @@
                           '((:discard (:habit))
                             (:name "IN-PROGRESS"
                                    :todo ("IN-PROGRESS" "REVIEW"))
-                            (:name "OVERDUE"
-                                   :deadline past
-                                   :scheduled past)
+                            ;; (:name "OVERDUE"
+                                   ;; :deadline past
+                                   ;; :scheduled past)
                             (:name "NEXT ACTIONS"
                                    :todo "NEXT")
                             (:discard (:anything t)))))))))))
