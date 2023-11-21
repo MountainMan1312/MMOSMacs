@@ -710,7 +710,9 @@
 ;; ---------------------------------
 
 (setq epa-pinentry-mode 'loopback
+      epa-file-name-regexp "\\.\\(gpg\\|\\asc\\)\\(~\\|\\.~[0-9]+~\\)?\\'"
       auth-source-debug t)
+(epa-file-name-regexp-update)
 
 
 ;; ---------------------------------------------------------------------
