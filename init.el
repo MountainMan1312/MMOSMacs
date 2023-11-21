@@ -880,9 +880,11 @@
         pdf-view-use-scaling nil
         doc-view-resolution 300
         pdf-view-midnight-colors
-        `(,mm/pdf-view-midnight-foreground . ,mm/pdf-view-midnight-background))
+        `(,mm/pdf-view-midnight-foreground . ,mm/pdf-view-midnight-background)
+        pdf-occur-search-batch-size 1)
   :hook (pdf-view-mode . pdf-view-themed-minor-mode))
 (require 'pdf-tools)
+(define-key pdf-view-mode-map (kbd "M-s o") 'pdf-occur)
 
 
 ;; ---------------------------------
