@@ -887,6 +887,7 @@
   :hook (pdf-view-mode . pdf-view-themed-minor-mode))
 (require 'pdf-tools)
 (define-key pdf-view-mode-map (kbd "M-s o") 'pdf-occur)
+(define-key pdf-view-mode-map (kbd "o") 'pdf-outline)
 
 
 ;; ---------------------------------
