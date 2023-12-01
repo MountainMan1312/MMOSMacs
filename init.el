@@ -246,6 +246,9 @@
       blink-cursor-blinks 0)
 (add-to-list 'default-frame-alist '(cursor-color . "orange"))
 
+;; Mouse
+(add-to-list 'default-frame-alist '(mouse-color . "orange"))
+
 ;; Highlights
 (set-face-attribute 'highlight nil :background "#333")
 
