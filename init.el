@@ -1565,6 +1565,37 @@ delimit it to END. Start an unlimited search at
 (setq browse-url-browser-function 'browse-url-firefox)
 
 
+;; ---------------------------------
+;; Finance
+;; -------
+;; Emacs is perfect for plaintext
+;; accounting.
+;; ---------------------------------
+
+(use-package hledger-mode
+  :straight t
+  :mode ("\\.journal\\'" "\\.hledger\\'")
+  :config
+  (setq hledger-jfile (expand-file-name "~/kb/self.fin.hledger")
+        hledger-currency-string "USD"))
+
+;; Completion for accounts
+(defun mm/hledger-completion-accounts ()
+  (when-let ((bounds (and (boundp 'hledger-accounts-cache)
+                          (bounds-of-thing-at-point 'symbol))))
+    (list (car bounds) (point) hledger-accounts-cache)))
+(add-hook 'hledger-mode-hook 'mm/hledger-completion-accounts)
+
+(use-package flycheck-hledger
+  :straight t
+  :after (flycheck
+          hledger-mode)
+  :demand t
+  :config
+  (setq flycheck-hledger-strict t)
+  (dolist (check
+     '("orderless" "payees" "accounts" "ordereddates" "recentassertions" "commodities" "uniqueleafnames"))
+     (add-to-list 'flycheck-hledger-checks check)))
 
 
 ;; ---------------------------------------------------------------------
