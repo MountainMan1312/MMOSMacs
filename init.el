@@ -1014,28 +1014,26 @@
 
 ;; Set buffer name to #+TITLE
 ;; Credit to SE user "Tobias"
-(defun mm/org-buffer-name-to-title (&optional end)
-  "Rename buffer to value of #+TITLE:.
-if END if non-nil, search for #+TITLE: at `point' and
-delimit it to END. Start an unlimited search at
-`point-min' otherwise."
-  (interactive)
-  (let ((beg (or (and end (point))
-                 (point-min))))
-    (save-excursion
-      (when end
-        (goto-char end)
-        (setq end (line-end-position)))
-      (goto-char beg)
-      (when (re-search-forward "^[[:space:]]*#\\+TITLE:[[:space:]]*\\(.*?\\)[[:space:]]*$" end t)
-        (rename-buffer (match-string 1)))))
-  nil)
-
-(defun mm/org-buffer-name-to-title-config ()
-  "Configure Org to rename buffer to value of #+TITLE:."
-  (font-lock-add-keywords nil '(mm/org-buffer-name-to-title)))
-
-(add-hook 'org-mode-hook #'mm/org-buffer-name-to-title-config)
+;; (defun mm/org-buffer-name-to-title (&optional end)
+  ;; "Rename buffer to value of #+TITLE:.
+;; if END if non-nil, search for #+TITLE: at `point' and
+;; delimit it to END. Start an unlimited search at
+;; `point-min' otherwise."
+  ;; (interactive)
+  ;; (let ((beg (or (and end (point))
+                 ;; (point-min))))
+    ;; (save-excursion
+      ;; (when end
+        ;; (goto-char end)
+        ;; (setq end (line-end-position)))
+      ;; (goto-char beg)
+      ;; (when (re-search-forward "^[[:space:]]*#\\+TITLE:[[:space:]]*\\(.*?\\)[[:space:]]*$" end t)
+        ;; (rename-buffer (match-string 1)))))
+  ;; nil)
+;; (defun mm/org-buffer-name-to-title-config ()
+  ;; "Configure Org to rename buffer to value of #+TITLE:."
+  ;; (font-lock-add-keywords nil '(mm/org-buffer-name-to-title)))
+;; (add-hook 'org-mode-hook #'mm/org-buffer-name-to-title-config)
 
 ;; Make org heading bullets look nicer
 (use-package org-bullets
