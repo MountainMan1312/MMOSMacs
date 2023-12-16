@@ -803,6 +803,9 @@
 (use-package dired-hacks
   :straight t)
 
+;; Stop dired opening so many buffers
+(setq dired-kill-when-opening-new-dired-buffer t)
+
 
 ;; ---------------------------------
 ;; Project management
