@@ -691,10 +691,20 @@
   :config
   (setq mc/cmds-to-run-for-all
         '(electric-pair-delete-pair
+          insert-char
+          org-self-insert-command
+          indent-for-tab-command
+          wdired--self-insert
+          ;;
+          end-of-line
           end-of-visual-line
+          org-end-of-line
           beginning-of-visual-line
           beginning-of-line-text
-          mm/keyboard-escape-quit-keep-windows)))
+          org-beginning-of-line
+          org-return
+          ;;
+          mm/keyboard-escape-quit-keep-windows)))2
 
 
 
