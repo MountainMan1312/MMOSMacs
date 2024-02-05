@@ -704,7 +704,7 @@
           org-beginning-of-line
           org-return
           ;;
-          mm/keyboard-escape-quit-keep-windows)))2
+          mm/keyboard-escape-quit-keep-windows)))
 
 
 
